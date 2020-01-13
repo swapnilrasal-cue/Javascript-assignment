@@ -1,1 +1,205 @@
 /*css file*/
+
+* {
+    box-sizing: border-box;
+}
+
+
+.heading{
+    padding: 20px;
+    font-size: 30px;
+    color: white;
+    margin: 3%;
+}
+body{
+  /* background-color: #384B59; */
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  background-image: url(../rest.jpg!d);
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.main-container{
+   width: 700px;   
+   margin: 0 auto;
+   text-align: center;
+   margin-top: 5%;
+}
+
+.register-login{
+    margin:2% 5%;
+    background-color: teal;
+    color: white;
+}
+
+.tab{
+    width: 50%;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    float: left;
+    border: 1px black groove;
+}
+
+
+.tab2{
+    border-radius: 50px;
+    color: white;
+    background-color: teal;
+    width: 50%;
+    margin-top: 5%;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    border: 1px black transparent;
+    margin-bottom: 5%;
+}
+
+.tab-button{
+    border-radius: 50px;
+    color: white;
+    background-color: teal;
+    width: 50%;
+    margin-top: 3%;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: middle;
+    border: 1px black transparent;
+    margin-bottom: 5%;
+    padding: 5px;
+}
+
+a:hover{
+    background-color:red;
+}
+
+.table{
+   width: 400px;
+   margin: 0 auto;
+   border: 1px solid black;
+   background-color: black;
+   opacity: 0.7;
+}
+
+.table-login{
+        width: 300px;
+        margin: 0 auto;
+        border: 1px solid black;
+        background-color: black;
+        opacity: 0.7;
+     
+}
+
+input{   
+    padding:3% 5%; 
+    text-align: left;
+    background-color: white;
+    opacity: 1;
+    margin-bottom: 10px; 
+    border: transparent;
+}
+
+textarea{
+    margin-bottom: 1%;
+    background-color: white;
+    resize: none;
+
+}
+.small-area{
+    padding: 10px 0px;
+    background-color: white;
+    font-size: 15px;
+    text-align: left;
+    margin-left: 5%;
+    color: #000;
+}
+
+.large-area
+{
+    width: 90%;
+}
+
+.property{
+    margin-top: 10px;
+}
+
+.clear{
+    clear: both;
+}
+
+.username-error{
+    color: red;
+    margin-bottom:2%;
+    display: none;
+}
+
+.firstname-error{
+    color: red;
+    margin-bottom:2%;
+    display: none;
+}
+
+.lastname-error{
+    color: red;
+    margin-bottom:2%;
+    display: none;
+}
+
+.password-error{
+    color: red;
+    margin-bottom:2%;
+    display: none;
+}
+
+.address-error{
+    color: red;
+    margin-bottom:2%;
+    display: none;
+}
+.pic-error{
+    color: red;
+    margin-bottom:2%;
+    display: none;
+}
+
+/* --------------------------------------Profile Page---------------------------------------- */
+
+.body-container{
+    width: 800px;
+    /* height: 700px;    */
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 3%;
+    background-color: black;
+    opacity: 0.7;
+ }
+
+ .sidebar{
+  margin: 30px;   
+  width: 250px;
+  float: left;
+  background-color: red;
+ }
+
+ .headingPersonalDetail{
+    padding: 5px;
+    font-size: 20px;
+    color: white;
+    margin: 1%;
+}
+
+.header{
+    line-height: 30px;
+    vertical-align: middle;
+    background-color: tomato;
+}
+
+.header-button{
+padding: 5px;
+float: right;
+
+}

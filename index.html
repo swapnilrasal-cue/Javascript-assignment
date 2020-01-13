@@ -1,1 +1,65 @@
-//html file
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="table">
+            <div class="register-login"> 
+              <a href="./index.html">
+                <div class="tab"> Sign Up </div>
+              </a>  
+              <a href="./login.html">
+                <div class="tab"> Login </div>
+              </a>
+                <div class="clear"></div>
+            </div>
+
+         <form action="#">
+          
+           <div class="heading">Register Here</div>
+ 
+           <input class="large-area" id="username" type="email" name="uname" value="" placeholder="Email Address*" required>
+           <div class="username-error"> incorrect username*</div>
+
+           <input class="large-area" id="firstname" type="text" name="fname" value="" placeholder="First Name*" required> 
+           <div class="firstname-error">firstname can not be empty</div>
+
+           <input class="large-area" id="lastname" type="text" name="lname" value="" placeholder="Last Name*" required>
+           <div class="lastname-error">lastname can not be empty</div>
+
+           <input class="large-area" id="password" type="password" name="pass" value="" placeholder="Set A Password*" required>
+           <div class="password-error">password can not be empty</div>
+
+           <textarea class="large-area" id="address" name="addr" rows="4" cols="20" placeholder="Address*" required></textarea>
+           <div class="address-error">Address can not be empty</div>
+
+           <input class="large-area" id="pic" type="file" name="picture" value="" placeholder="Profile Picture*" required>
+           <div class="pic-error">pic can not be empty</div>
+
+           <div class="large-area">
+                Gender - 
+                <input id="men" type="radio" name="gen" value="Male" checked required/> Male
+                <input id="women" type="radio" name="gen" value="Female"/> Female
+                <input id="other" type="radio" name="gen" value="Other"> Other 
+            </div>
+
+            <button class="tab2" onclick="reg()" type="submit"> register</button>
+            <div class="error-message"></div>
+        </form>
+    
+
+</div>
+    </div>
+    <script src="./script.js"> </script>
+    
+</body>
+
+</html>

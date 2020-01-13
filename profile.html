@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body onload="assignval()">
+ 
+
+    <div class="body-container">
+     
+    <header class="header">
+     <div class="header-button">
+     <button type="submit" onclick="sessionClear()"> logout</button>
+     </div>
+     <div class="clear"></div>
+    </header>
+
+    <aside class=sidebar>
+
+        <br> <p class="headingPersonalDetail">Personal Details </p> <br>
+
+        <form>
+        <br>Username<br>   
+        <input type="text" id="user-name" name="uname" value="" readonly>
+        
+        <br>FirstName<br>  
+        <input type="text" id="first-name" name="fname" value="">
+        
+        <br>LastName<br>    
+        <input type="text" id="last-name" name="lname" value="">
+        
+        <br>Password<br>      
+        <input type="text" id="pass" name="password" value="">
+
+        <br>Address<br>      
+        <input type="text" id="addr" name="address" value="">
+
+        <br>Picture<br>      
+        <input type="text" id="pic" name="picture" value="">
+        <br>Gender<br>      
+        <input type="text" id="gen" name="gender" value="">
+        <br>
+        <button class="tab-button" type="submit" onclick="reg()">Submit Changes</button>
+    </form>
+    </aside>   
+    <div class="clear"></div>
+        <div class="table">
+            
+        </div>
+    </div>   
+    <script src="./script.js"> </script>
+</body>
+
+</html>

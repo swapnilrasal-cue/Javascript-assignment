@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+ 
+    <div class="main-container">
+        <div class="table-login">
+            <div class="register-login"> 
+              <a href="./index.html">
+                <div class="tab"> Sign Up </div>
+              </a>  
+              <a href="#">
+                <div class="tab"> Login </div>
+              </a>
+                <div class="clear"></div>
+            </div>
+
+         <form>
+          
+           <div class="heading">Login</div>
+ 
+           <input class="large-area" id="user" type="text" name="uname" value="" placeholder="Email Address*" required>
+
+           <input class="large-area" id="pass" type="password" name="pass" value="" placeholder="Password*">
+   
+           <input class="tab-button" onclick="checklogin()" type="button" value="Submit">
+    </form>
+
+    </div>
+    </div>   
+    <script src="./script.js"></script>
+</body>
+
+</html>
