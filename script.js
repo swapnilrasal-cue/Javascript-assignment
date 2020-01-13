@@ -9,11 +9,18 @@
         var Address = document.getElementById("address").value;
         var Pic = document.getElementById("pic").value;
         var Gender = document.querySelector('input[name=gen]:checked').value;
-
-        var dataObj={"username":UserName,"firstname":FirstName,"lastname":LastName,"password":Password,"address":Address,"pic":Pic,"gender":Gender};
-        // userArray.push(dataObj);
-        var userRecord = JSON.stringify(dataObj);
-        localStorage.setItem(dataObj.username,userRecord);
+          
+        if(UserName !== "" && FirstName!== "" && LastName!=="" && Password !== "" && Address !== "" && Pic !== "" && Gender !== "")
+        {
+            var dataObj={"username":UserName,"firstname":FirstName,"lastname":LastName,"password":Password,"address":Address,"pic":Pic,"gender":Gender};
+            // userArray.push(dataObj);
+            var userRecord = JSON.stringify(dataObj);
+            localStorage.setItem(dataObj.username,userRecord);
+             
+        }
+        else{
+            alert("All Fields are Required");
+        }
         }
 
         function checklogin()
