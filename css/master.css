@@ -32,7 +32,7 @@ body{
 
 .register-login{
     margin:2% 5%;
-    background-color: teal;
+    
     color: white;
 }
 
@@ -42,7 +42,9 @@ body{
     line-height: 50px;
     vertical-align: middle;
     float: left;
+    color: white;
     border: 1px black groove;
+    background-color: teal;
 }
 
 
@@ -73,9 +75,7 @@ body{
     padding: 5px;
 }
 
-a:hover{
-    background-color:red;
-}
+
 
 .table{
    width: 400px;
@@ -122,7 +122,19 @@ textarea{
 {
     width: 90%;
 }
+.image-area
+{   
+    margin-left: 5%;
+    float: left;
+    width: 60%;
+}
 
+.image-preview{
+float: left;
+width: 30%;
+height: 45px;
+background-color: white;
+}
 .property{
     margin-top: 10px;
 }
@@ -131,39 +143,12 @@ textarea{
     clear: both;
 }
 
-.username-error{
-    color: red;
+.error-section{
+    margin-left: 5%;
     margin-bottom:2%;
+    font-size: 15px;
     display: none;
-}
-
-.firstname-error{
-    color: red;
-    margin-bottom:2%;
-    display: none;
-}
-
-.lastname-error{
-    color: red;
-    margin-bottom:2%;
-    display: none;
-}
-
-.password-error{
-    color: red;
-    margin-bottom:2%;
-    display: none;
-}
-
-.address-error{
-    color: red;
-    margin-bottom:2%;
-    display: none;
-}
-.pic-error{
-    color: red;
-    margin-bottom:2%;
-    display: none;
+    text-align: left;
 }
 
 /* --------------------------------------Profile Page---------------------------------------- */
@@ -179,9 +164,10 @@ textarea{
  }
 
  .sidebar{
-  margin: 30px;   
-  width: 250px;
-  float: left;
+  margin: 0 auto;   
+  width: 500px;
+  text-align: center;
+  margin-bottom: 5%;
   background-color: red;
  }
 
@@ -193,9 +179,9 @@ textarea{
 }
 
 .header{
-    line-height: 30px;
+    line-height: 50px;
     vertical-align: middle;
-    background-color: tomato;
+    /* background-color: blue; */
 }
 
 .header-button{
@@ -203,3 +189,38 @@ padding: 5px;
 float: right;
 
 }
+
+.profileSpan{
+    
+    margin:5% 5%;
+    vertical-align: middle;
+    text-align: left;
+    opacity: 1;
+    margin-bottom: 10px; 
+    border: transparent;
+}
+
+.profileSpan2{
+    
+    width: 30 %;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.left-side-div{
+    float: left;
+    line-height: 32px;
+     width: 50px;
+    padding-left: 60px;
+}
+.right-side-div{
+    float: right;
+    width: 300px;
+    
+    }
+
+.button{
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}    

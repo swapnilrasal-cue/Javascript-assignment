@@ -1,88 +1,139 @@
-   function reg()
+function ValidateUser()
+{
+    var UserName = document.getElementById("username").value;
+    var FirstName = document.getElementById("firstname").value;
+    var LastName = document.getElementById("lastname").value;
+    var Password = document.getElementById("password").value;
+    var Address = document.getElementById("address").value;
+    var Pic = document.getElementById("uploadImage").value;
+    var Gender = document.querySelector('input[name=gen]:checked').value;
+
+    console.log(Pic);
+    var dataObj={"username":UserName,"firstname":FirstName,"lastname":LastName,"password":Password,"address":Address,"pic":Pic,"gender":Gender};
+    var userRecord = JSON.stringify(dataObj);
+
+    if(!localStorage.getItem(UserName)){  
+        
+        if(UserName.match(/.+@(cuelogic)\.com$/))
+        { 
+        document.getElementById("unameError").innerHTML="UserName* Available";
+        document.getElementById("unameError").style.display="block";
+        document.getElementById("unameError").style.color="green";
+        console.log("proper");
+        reg();   
+        
+        }
+
+        else
         {
-        var userArray=[];
+            alert("incorrect domain only cuelogic.com is allowed");
+        }
+        
+    }else
+    {
+        document.getElementById("unameError").innerHTML="UserName* Already Exist";
+        document.getElementById("unameError").style.display="block";
+        document.getElementById("unameError").style.color="red";
+    }
+}
+
+function validatePass(Password){
+    
+    if( Password.length < 8)
+    {
+        document.getElementById("passError").innerHTML="Weak password - * Password should be atleast 9-15 charachers *";
+        document.getElementById("passError").style.display="block";
+        document.getElementById("passError").style.color="red";
+        console.log("weak");
+    }
+    else
+    {
+        document.getElementById("passError").innerHTML="Strong Password";
+        document.getElementById("passError").style.display="block";
+        document.getElementById("passError").style.color="green";
+        console.log("strong");
+    }
+}
+
+function ValidatefName(firstname)
+      { 
+          
+        if (!firstname.match(/^[a-zA-Z]+$/)) 
+        {
+            document.getElementById("fnameError").innerHTML="Only Alphabets are Allowed";
+            document.getElementById("fnameError").style.display="block";
+            document.getElementById("fnameError").style.color="red";
+            return false;
+        }
+        else
+        {
+            document.getElementById("fnameError").innerHTML="Name Available";
+            document.getElementById("fnameError").style.display="block";
+            document.getElementById("fnameError").style.color="green";
+            return true;    
+        }    
+            
+      }
+
+function ValidatelName(LastName)
+{ 
+           if (!LastName.match(/^[a-zA-Z]+$/)) 
+        {
+            document.getElementById("lnameError").innerHTML="Only Alphabets are Allowed";
+            document.getElementById("lnameError").style.display="block";
+            document.getElementById("lnameError").style.color="red";
+            return false;
+        }
+        else
+        {
+            document.getElementById("lnameError").innerHTML="Name Available";
+            document.getElementById("lnameError").style.display="block";
+            document.getElementById("lnameError").style.color="green";
+            return true;    
+        }    
+}
+function PreviewImage() {
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+    oFReader.onload = function (oFREvent) {
+        document.getElementById("uploadPreview").src = oFREvent.target.result;
+    }
+}
+
+function reg(){
+        // var userArray=[];
          
         var UserName = document.getElementById("username").value;
         var FirstName = document.getElementById("firstname").value;
         var LastName = document.getElementById("lastname").value;
         var Password = document.getElementById("password").value;
         var Address = document.getElementById("address").value;
-        var Pic = document.getElementById("pic").value;
+        var Pic = document.getElementById("uploadImage").value;
         var Gender = document.querySelector('input[name=gen]:checked').value;
-          
+        
         if(UserName !== "" && FirstName!== "" && LastName!=="" && Password !== "" && Address !== "" && Pic !== "" && Gender !== "")
-        {
-            var dataObj={"username":UserName,"firstname":FirstName,"lastname":LastName,"password":Password,"address":Address,"pic":Pic,"gender":Gender};
-            // userArray.push(dataObj);
-            var userRecord = JSON.stringify(dataObj);
-            localStorage.setItem(dataObj.username,userRecord);
-             
+        {  
+
+            if(Password.length > 8)
+            {
+                var dataObj={"username":UserName,"firstname":FirstName,"lastname":LastName,"password":Password,"address":Address,"pic":Pic,"gender":Gender};
+                var userRecord = JSON.stringify(dataObj);
+                localStorage.setItem(dataObj.username,userRecord);
+                window.location ="./login.html";
+            }
+            else
+            {
+              document.getElementById("passError").innerHTML="Weak password - * Password should be atleast 9-15 charachers *";
+              document.getElementById("passError").style.display="block";
+              document.getElementById("passError").style.color="red";
+              console.log("weak");
+            }
         }
         else{
-            alert("All Fields are Required");
+            document.getElementById("all-error-message").innerHTML="All Fields are Required ";
+            document.getElementById("all-error-message").style.color="red";
         }
-        }
-
-        function checklogin()
-        {
-            var username = document.getElementById("user").value;
-            var userpass = document.getElementById("pass").value;
-            console.log(username);
-            console.log(userpass);
-            var userDetails = JSON.parse(localStorage.getItem(username));
-                console.log(userDetails);
-            var check=userDetails.password;
-            console.log(check);
-            
-            if(localStorage.getItem(username)){
-                console.log("user Found");
-               
-                if(userDetails.password !== userpass){
-                    console.log("wrong user");
-                }
-                else{
-                    console.log("password match");
-                    window.location="./profile.html";
-                    sessionStorage.setItem('uname',username);
-            
-                }
-            }      
-            else{
-                console.log("user Not Found");
-            }
-           }
-
-
-function assignval(){
-
-    var testuid=document.getElementById("user-name");
-    var testfname=document.getElementById("first-name");
-    var testlname=document.getElementById("last-name");
-    var testpass=document.getElementById("pass");
-    var testaddr=document.getElementById("addr");
-    var testpic=document.getElementById("pic");
-    var testgen=document.getElementById("gen");
-    console.log(testuid);
-    console.log(testfname);
-    console.log(testlname);
-    console.log(testpass);
-    console.log(testaddr);
-
-
-    var test2=JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    
-    testuid.value=test2.username;
-    testfname.value=test2.firstname;
-    testlname.value=test2.lastname;
-    testpass.value=test2.password;
-    testaddr.value=test2.address;
-    testpic.value=test2.pic;
-    testgen.value=test2.gender;
-
-
 }
 
-function sessionClear(){
-sessionStorage.clear();
-window.location="./login.html";
-}
+ 

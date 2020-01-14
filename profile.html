@@ -16,37 +16,41 @@
      
     <header class="header">
      <div class="header-button">
-     <button type="submit" onclick="sessionClear()"> logout</button>
+        <a href="./mainpage.html"><button class="button" type="button"> Home</button></a>
+        <a href="./todo.html"><button class="button" type="button" > Todo Page</button></a>     
+        <button class="button" type="button" onclick="sessionClear()"> logout</button>
      </div>
      <div class="clear"></div>
     </header>
 
-    <aside class=sidebar>
+    <aside class="sidebar">
 
         <br> <p class="headingPersonalDetail">Personal Details </p> <br>
 
         <form>
-        <br>Username<br>   
-        <input type="text" id="user-name" name="uname" value="" readonly>
-        
-        <br>FirstName<br>  
-        <input type="text" id="first-name" name="fname" value="">
-        
-        <br>LastName<br>    
-        <input type="text" id="last-name" name="lname" value="">
-        
-        <br>Password<br>      
-        <input type="text" id="pass" name="password" value="">
+         <div class="left-side-div">
+            <div class="profileSpan"> Username</div>
+            <div  class="profileSpan">FirstName </div>
+            <div  class="profileSpan"> LastName</div>  
+            <div  class="profileSpan">Password</div>       
+            <div  class="profileSpan">Address</div>    
+            <div  class="profileSpan">Picture</div> 
+            <div  class="profileSpan">Gender</div>  
+         </div>
 
-        <br>Address<br>      
-        <input type="text" id="addr" name="address" value="">
+         <div class="right-side-div">
+            <input class="profileSpan2" type="text" id="user-name" name="uname" value="" readonly> 
+            <input class="profileSpan2"  type="text" id="first-name" name="fname" value="">
+            <input class="profileSpan2"  type="text" id="last-name" name="lname" value="">
+            <input class="profileSpan2"  type="text" id="pass" name="password" value="">
+            <input  class="profileSpan2" type="text" id="addr" name="address" value="">
+            <input  class="profileSpan2" type="text" id="pic" name="picture" value="">
+            <input class="profileSpan2" type="text" id="gen" name="gender" value="">
 
-        <br>Picture<br>      
-        <input type="text" id="pic" name="picture" value="">
-        <br>Gender<br>      
-        <input type="text" id="gen" name="gender" value="">
+         </div>
+         <div class="clear"></div>
         <br>
-        <button class="tab-button" type="submit" onclick="reg()">Submit Changes</button>
+        <button class="tab-button" type="submit" onclick="EditUserData()">Submit Changes</button>
     </form>
     </aside>   
     <div class="clear"></div>
@@ -54,7 +58,7 @@
             
         </div>
     </div>   
-    <script src="./script.js"> </script>
+    <script src="./profileScript.js"> </script>
 </body>
 
 </html>

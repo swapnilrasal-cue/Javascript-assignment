@@ -1,0 +1,28 @@
+
+    // for(let test in localStorage){
+    //         if(test == "UserName")
+    //         {
+    //             console.log("already EXist");
+    //             return false;        
+    //         }
+    //         else
+    //         {
+    //             console.log("username Available");
+    //             return true;       
+    //         }
+    // }
+    
+
+    // for(i=1;i <= localStorage.length ;i++)
+    // {
+        
+    // }
+
+
+// for(let i = 0; i < localStorage.length; i++){
+
+// }
+
+
+
+ onchange="document.getElementById('userImage').src = this.value"
