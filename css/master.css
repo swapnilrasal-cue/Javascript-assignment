@@ -173,9 +173,13 @@ background-color: white;
 
  .headingPersonalDetail{
     padding: 5px;
-    font-size: 20px;
+    font-size: 50px;
     color: white;
     margin: 1%;
+}
+
+.profile-picture{
+
 }
 
 .header{
@@ -203,6 +207,12 @@ float: right;
 .profileSpan2{
     
     width: 30 %;
+    display: inline-block;
+    margin-right: 30px;
+}
+.profileSpan3{
+    
+    width: 210px ;
     display: inline-block;
     margin-right: 30px;
 }

@@ -50,6 +50,16 @@ function EditUserData(){
     }
     }
 
+    function PreviewImg() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("upload").files[0]);
+    
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        }
+    }
+    
+
     function preventBack() { window.history.forward(); }
 setTimeout("preventBack()", 0);
 window.onunload = function () { null };
