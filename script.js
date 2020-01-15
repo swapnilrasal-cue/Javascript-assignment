@@ -5,7 +5,7 @@ function ValidateUser()
     var LastName = document.getElementById("lastname").value;
     var Password = document.getElementById("password").value;
     var Address = document.getElementById("address").value;
-    var Pic = document.getElementById("uploadImage").value;
+    var Pic = document.getElementById("uploadPreview").src;
     var Gender = document.querySelector('input[name=gen]:checked').value;
 
     console.log(Pic);
@@ -92,12 +92,15 @@ function ValidatelName(LastName)
             return true;    
         }    
 }
-function PreviewImage() {
+
+function PreviewImage(){
     var oFReader = new FileReader();
     oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
 
     oFReader.onload = function (oFREvent) {
         document.getElementById("uploadPreview").src = oFREvent.target.result;
+        var imagepath=oFREvent.target.result;
+        // localStorage.setItem("imagepath",imagepath);
     }
 }
 
@@ -109,7 +112,7 @@ function reg(){
         var LastName = document.getElementById("lastname").value;
         var Password = document.getElementById("password").value;
         var Address = document.getElementById("address").value;
-        var Pic = document.getElementById("uploadImage").value;
+        var Pic = document.getElementById("uploadPreview").src;
         var Gender = document.querySelector('input[name=gen]:checked').value;
         
         if(UserName !== "" && FirstName!== "" && LastName!=="" && Password !== "" && Address !== "" && Pic !== "" && Gender !== "")
@@ -117,8 +120,17 @@ function reg(){
 
             if(Password.length > 8)
             {
-                var dataObj={"username":UserName,"firstname":FirstName,"lastname":LastName,"password":Password,"address":Address,"pic":Pic,"gender":Gender};
-                var userRecord = JSON.stringify(dataObj);
+                var dataObj= {
+                    "username":UserName,
+                    "firstname":FirstName,
+                    "lastname":LastName,
+                    "password":Password,
+                    "address":Address,
+                    "pic": Pic,
+                    "gender":Gender
+                };
+
+                // var userRecord = JSON.stringify(dataObj);
                 localStorage.setItem(dataObj.username,userRecord);
                 window.location ="./login.html";
             }

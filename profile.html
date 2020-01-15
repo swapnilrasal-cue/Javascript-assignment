@@ -24,8 +24,7 @@
     </header>
 
     <aside class="sidebar">
-            
-       
+        <img id="uploadPreview" class="profilepic" class="profilepic" src="" alt="profile">
         <br> <p class="headingPersonalDetail">Personal Details </p> <br>
 
         <form>
@@ -35,31 +34,31 @@
             <div  class="profileSpan"> LastName</div>  
             <div  class="profileSpan">Password</div>       
             <div  class="profileSpan">Address</div>    
-            <div  class="profileSpan">Picture</div> 
             <div  class="profileSpan">Gender</div>  
          </div>
 
          <div class="right-side-div">
-            <input class="profileSpan2" type="text" id="user-name" name="uname" value="" readonly> 
-            <input class="profileSpan2"  type="text" id="first-name" name="fname" value="">
-            <input class="profileSpan2"  type="text" id="last-name" name="lname" value="">
-            <input class="profileSpan2"  type="text" id="pass" name="password" value="">
-            <input  class="profileSpan2" type="text" id="addr" name="address" value="">
-            <input class="profileSpan2" type="text" id="pic" name="picture" value="">
-            <input class="profileSpan2" type="text" id="gen" name="gender" value="">
-            
+            <input class="profileSpan2" type="text" id="username" name="uname" value="" readonly> 
+            <input class="profileSpan2"  type="text" id="firstname" name="fname" value="" readonly>
+            <input class="profileSpan2"  type="text" id="lastname" name="lname" value="" readonly>
+            <input class="profileSpan2"  type="text" id="password" name="password" value="" readonly>
+            <input  class="profileSpan2" type="text" id="address" name="address" value="" readonly>
+            <input class="profileSpan2" type="text" id="gen" name="gender" value="" readonly>
+            <!-- <input style="visibility: hidden;" class="profileSpan2" type="text" id="uploadPreview" name="picture" value="" readonly> -->
+
          </div>
          <div class="clear"></div>
         <br>
-        <button class="tab-button" type="submit" onclick="EditUserData()">Submit Changes</button>
+        <a class="form-button" href="./editPofile.html">Edit User Profile</a>
+       <br>
+       <br>
     </form>
     </aside>   
     <div class="clear"></div>
-        <div class="table">
-            
-        </div>
+       
     </div>   
     <script src="./profileScript.js"> </script>
+
 </body>
 
 </html>

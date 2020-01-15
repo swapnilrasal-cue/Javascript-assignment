@@ -29,9 +29,9 @@ function checklogin()
                 console.log("user Found");
                
                 if(userDetails.password !== userpass){
-                    console.log("wrong user");
+                    console.log("wrong Password Try Again");
                     document.getElementById("passwordError").style.display="block";
-                    document.getElementById("passwordError").innerHTML="wrong user";
+                    document.getElementById("passwordError").innerHTML="wrong Password Try Again";
                     document.getElementById("passwordError").style.color="red";
                 }
                 else{

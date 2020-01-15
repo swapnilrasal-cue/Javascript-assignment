@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body onload="assignval()">
+ 
+
+    <div class="body-container">
+     
+    <header class="header">
+     <div class="header-button">
+        <a href="./mainpage.html"><button class="button" type="button"> Home</button></a>
+        <a href="./todo.html"><button class="button" type="button" > Todo Page</button></a>     
+        <button class="button" type="button" onclick="sessionClear()"> logout</button>
+     </div>
+     <div class="clear"></div>
+    </header>
+
+    <aside class="sidebar" style="background-color:	rgb(75, 126, 180);">
+            
+       
+        <br> <p class="headingPersonalDetail">Edit User Details </p> <br>
+<!-- 
+        <form>
+          <div class="left-side-div">
+            <div class="profileSpan"> Username</div>
+            <div  class="profileSpan">FirstName </div>
+            <div  class="profileSpan"> LastName</div>  
+            <div  class="profileSpan">Password</div>       
+            <div  class="profileSpan">Address</div>    
+            <div  class="profileSpan">Picture</div> 
+            <div  class="profileSpan">Gender</div>  
+         </div>
+
+         <div class="right-side-div">
+            <input class="profileSpan2" type="text" id="user-name" name="uname" value="" readonly> 
+            <input class="profileSpan2"  type="text" id="first-name" name="fname" value="">
+            <input class="profileSpan2"  type="text" id="last-name" name="lname" value="">
+            <input class="profileSpan2"  type="text" id="pass" name="password" value="">
+            <input  class="profileSpan2" type="text" id="addr" name="address" value="">
+            <input class="profileSpan2" type="text" id="pic" name="picture" value="">
+            <input class="profileSpan2" type="text" id="gen" name="gender" value="">
+            
+         </div>  -->
+
+         <div id="all-error-message" style="margin-bottom: 2%;"></div>
+         <input class="large-area" id="username" type="email" name="uname" value="" placeholder="Email Address*" readonly required onchange="ValidateUser(this.value) ">
+         <div class="error-section" id="unameError" ></div>
+       
+         <input class="large-area" id="firstname" type="text" name="fname" value="" placeholder="First Name*" required onchange="ValidatefName(this.value)"> 
+         <div class="error-section" id="fnameError">firstname can not be empty</div>
+
+         <input class="large-area" id="lastname" type="text" name="lname" value="" placeholder="Last Name*" required onchange="ValidatelName(this.value)">
+         <div class="error-section" id="lnameError">lastname can not be empty</div>
+
+         <input class="large-area" id="password" type="password" name="pass" value="" placeholder="Set A Password*" required onchange="validatePass(this.value)" >
+         <div class="error-section" id="passError">password can not be empty</div>
+
+         <textarea class="large-area" id="address" name="addr" rows="4" cols="20" placeholder="Address*" required ></textarea>
+         <div class="error-section">Address can not be empty</div>
+
+         <input class="image-area" id="uploadImage" type="file" accept="image/*" name="picture" value="" placeholder="Profile Picture*" required onchange="PreviewImage()">
+         <img class="image-preview" id="uploadPreview" src="" alt="image" width="28%" height="50px">
+         <div class="clear"></div>
+         <div class="error-section">pic can not be empty</div>
+
+         <div class="large-area">
+              Gender - 
+              <input id="men" type="radio" name="gen" value="Male" checked required/> Male
+              <input id="women" type="radio" name="gen" value="Female"/> Female
+              <input id="other" type="radio" name="gen" value="Other"> Other 
+          </div>
+
+          <!-- <button class="tab2" onclick="EditUserData()" type="button"> register</button>
+         <div class="clear"></div> -->
+        <br>
+        <button class="tab-button" type="button" onclick="EditUserData()">Submit Changes</button>
+    </form>
+    </aside>   
+    <div class="clear"></div>
+        <div class="table">
+            
+        </div>
+    </div>   
+    <script src="./profileScript.js"> </script>
+    <script src="./script.js"> </script>
+</body>
+
+</html>

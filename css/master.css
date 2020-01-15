@@ -21,13 +21,15 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   
+  
 }
 
 .main-container{
-   width: 700px;   
+   width: 900px;   
    margin: 0 auto;
    text-align: center;
    margin-top: 5%;
+   
 }
 
 .register-login{
@@ -132,7 +134,7 @@ textarea{
 .image-preview{
 float: left;
 width: 30%;
-height: 45px;
+height: 51px;
 background-color: white;
 }
 .property{
@@ -168,7 +170,7 @@ background-color: white;
   width: 500px;
   text-align: center;
   margin-bottom: 5%;
-  background-color: red;
+  background-color: rgb(75, 126, 180);
  }
 
  .headingPersonalDetail{
@@ -177,15 +179,9 @@ background-color: white;
     color: white;
     margin: 1%;
 }
-
-.profile-picture{
-
-}
-
 .header{
-    line-height: 50px;
+    line-height: 40px;
     vertical-align: middle;
-    /* background-color: blue; */
 }
 
 .header-button{
@@ -206,10 +202,18 @@ float: right;
 
 .profileSpan2{
     
-    width: 30 %;
+    width: 90%;
     display: inline-block;
     margin-right: 30px;
 }
+
+.profileSpan3{
+
+    visibility: hidden;
+}
+
+
+
 .profileSpan3{
     
     width: 210px ;
@@ -234,3 +238,101 @@ float: right;
     color: white;
     border-radius: 10px;
 }    
+
+
+.form-button{
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-bottom: 6%;
+}    
+
+.profilepic{
+    width: 125px; 
+    height:125px;
+    margin-top: 10px;
+    border: 5px solid black;
+    border-radius: 70px;
+}
+
+/* ------------------------todo page ---------------------------------------- */
+
+.todo-container{
+    width: 100%;
+    /* background-color: orangered; */
+    background-color: rgb(75, 126, 180);
+
+}
+
+.todo-heading{
+    font-size: 40px;
+    padding: 15px 0px;  
+    color: white;
+    font-weight: 700;
+   margin-top: 0px;
+   text-shadow: black 4px 4px; 
+
+}
+
+.todo-input{
+    padding:1% ; 
+    text-align: left;
+    background-color: white;
+    opacity: 1;
+    margin-bottom: 10px; 
+    border: transparent;
+    margin-right: 15px;
+}
+
+.todo-input-add{
+    padding:1% ; 
+    text-align:left; 
+    background-color: white;
+    opacity: 1;
+    
+    border: transparent;
+    margin-right: 15px;
+
+}
+
+.todo-label{
+color: black;
+margin-right: 15px;
+float: left;
+}
+
+select{
+    padding: 5px;
+    color: #000;
+    background-color: white;
+    margin-right: 15px;
+}
+.todo-add-container{
+text-align: left;
+}
+
+.todo-list{
+list-style-type: none;
+}
+
+.list-items{
+width: 100%;
+
+}
+
+.list-items-containts{
+    float: left;
+    margin-right: 55px;
+}
+
+.add-todo-tasks{
+    margin-top: 50px;
+    margin: 0 auto;
+    width: 500px;
+    background-color: yellow;
+    text-align: left;
+    padding-left: 30px;
+}
+
