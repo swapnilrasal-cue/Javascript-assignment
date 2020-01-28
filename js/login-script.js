@@ -1,3 +1,21 @@
+// ___________________________________SUCCESS MESSAGE __________________________________
+
+(function(){
+    let p = sessionStorage.getItem('test')
+    if(p == 5){
+       // document.getElementById("test").innerHTML = 'kasjckasjhckasjhck'
+        console.log("Signup Sucessful");
+        document.getElementById("success").style.display="block";
+        sessionStorage.removeItem('test')
+    }
+    else
+    {
+        console.log("Signup Sucessful");
+        document.getElementById("failure").style.display="block";
+    }
+})();
+
+
 function valuser(username)
 {
     console.log(username);
@@ -36,6 +54,7 @@ function checklogin()
                 }
                 else{
                     console.log("password match");
+                    sessionStorage.setItem('test',5);
                     window.location="./mainpage.html";
                     sessionStorage.setItem('uname',username);
                 }

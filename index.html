@@ -10,44 +10,67 @@
 </head>
 
 <body >
-    <div class="main-container">
-        <div class="table">
-            <div class="register-login"> 
-              <a href="./index.html">
-                <div class="tab"> Sign Up </div>
-              </a>  
-              <a href="./login.html">
-                <div class="tab"> Login </div>
-              </a>
-                <div class="clear"></div>
-            </div>
+  <div class="main-container">
+      <div class="table">
+          <div class="register-login"> 
+            <a href="./index.html">
+              <div class="tab"> Sign Up </div>
+            </a>  
+            <a href="./login.html">
+              <div class="tab"> Login </div>
+            </a>
+              <div class="clear"></div>
+          </div>
 
-         <form >
+         <form>
           
            <div class="heading">Register Here</div>
 
-           <div id="all-error-message" style="margin-bottom: 2%;"></div>
-           <input class="large-area" id="username" type="email" name="uname" value="" placeholder="Email Address*"  required onchange="ValidateUser(this.value)">
+          <div id="all-error-message" style="margin-bottom: 2%;"></div> 
+          
+          <span class="required-field"> * </span> 
+          <input class="large-area" id="username" type="email" name="uname" value=""
+           placeholder=" Email Address *"  required onchange="ValidateUser(this.value)">           
            <div class="error-section" id="unameError" ></div>
-         
-           <input class="large-area" id="firstname" type="text" name="fname" value="" placeholder="First Name*" required onchange="ValidatefName(this.value)"> 
-           <div class="error-section" id="fnameError">firstname can not be empty</div>
-
-           <input class="large-area" id="lastname" type="text" name="lname" value="" placeholder="Last Name*" required onchange="ValidatelName(this.value)">
-           <div class="error-section" id="lnameError">lastname can not be empty</div>
-
-           <input class="large-area" id="password" type="password" name="pass" value="" placeholder="Set A Password*" required onchange="validatePass(this.value)" >
-           <div class="error-section" id="passError">password can not be empty</div>
-
-           <textarea class="large-area" id="address" name="addr" rows="4" cols="20" placeholder="Address*" required ></textarea>
-           <div class="error-section">Address can not be empty</div>
-
-           <input class="image-area" id="uploadImage" type="file" accept="image/*" name="picture" value="" placeholder="Profile Picture*" required onchange="PreviewImage()">
-           <img class="image-preview" id="uploadPreview" src="" alt="image" width="28%" height="43px">
            <div class="clear"></div>
+         
+           <span class="required-field"> * </span> 
+           <input class="large-area" id="firstname" type="text" name="fname" value="" 
+           placeholder="First Name*" required onchange="ValidatefName(this.value)"> 
+           <div class="error-section" id="fnameError">firstname can not be empty</div>
+           <div class="clear"></div>
+
+
+           <span class="required-field"> * </span> 
+           <input class="large-area" id="lastname" type="text" name="lname" value="" 
+           placeholder="Last Name*" required onchange="ValidatelName(this.value)">           
+           <div class="error-section" id="lnameError">lastname can not be empty</div>
+           <div class="clear"></div>
+
+
+           <span class="required-field"> * </span> 
+           <input class="large-area" id="password" type="password" name="pass" value=""
+            placeholder="Set A Password*" required onchange="validatePass(this.value)" >
+            <div class="error-section" id="passError">password can not be empty</div>
+            <div class="clear"></div>
+
+
+           <span class="required-field"> * </span> 
+           <textarea class="large-area top" id="address" name="addr" rows="4" cols="20" 
+           placeholder="Address*" required ></textarea>           
+           <div class="error-section">Address can not be empty</div>
+           <div class="clear"></div>
+
+           <input class="large-area image-area" id="uploadImage" type="file" accept="image/*" name="picture" 
+           value="" placeholder="Profile Picture*" required onchange="PreviewImage()">
+          
+           <img class="image-preview top" id="uploadPreview" src="" alt="image" >
+          
+           <div class="clear"></div>
+          
            <div class="error-section">pic can not be empty</div>
 
-           <div class="large-area">
+           <div class="large-area top">
                 Gender - 
                 <input id="men" type="radio" name="gen" value="Male" checked required/> Male
                 <input id="women" type="radio" name="gen" value="Female"/> Female
@@ -57,12 +80,8 @@
             <button class="tab2" onclick="ValidateUser()" type="button"> register</button>
           
         </form>
-    
-
-</div>
     </div>
-    <script src="./script.js"> </script>
-    
+  </div>
+        <script src="./js/script.js"> </script>   
 </body>
-
 </html>

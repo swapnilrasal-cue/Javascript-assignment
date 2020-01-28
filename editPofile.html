@@ -9,7 +9,7 @@
 
 </head>
 
-<body onload="assignval()">
+<body onload="assignval2()">
  
 
     <div class="body-container">
@@ -66,22 +66,24 @@
          <textarea class="large-area" id="address" name="addr" rows="4" cols="20" placeholder="Address*" required ></textarea>
          <div class="error-section">Address can not be empty</div>
 
-         <input class="image-area" id="uploadImage" type="file" accept="image/*" name="picture" value="" placeholder="Profile Picture*" required onchange="PreviewImage()">
-         <img class="image-preview" id="uploadPreview" src="" alt="image" width="28%" height="50px">
+
+         <input class="large-area top" id="uploadImage" type="file" accept="image/*" name="picture" value="" placeholder="Profile Picture*" required onchange="PreviewImage()">
+         <img class="image-preview2" id="uploadPreview" src="" alt="image" width="28%" height="50px">
          <div class="clear"></div>
          <div class="error-section">pic can not be empty</div>
 
          <div class="large-area">
               Gender - 
-              <input id="men" type="radio" name="gen" value="Male" checked required/> Male
-              <input id="women" type="radio" name="gen" value="Female"/> Female
-              <input id="other" type="radio" name="gen" value="Other"> Other 
+              <input id="Male" type="radio" name="gen" value="Male"/> Male
+              <input id="Female" type="radio" name="gen" value="Female"/> Female
+              <input id="Other" type="radio" name="gen" value="Other"> Other 
+              <!-- <input type="" name="" id="gen"> -->
           </div>
 
           <!-- <button class="tab2" onclick="EditUserData()" type="button"> register</button>
          <div class="clear"></div> -->
         <br>
-        <button class="tab-button" type="button" onclick="EditUserData()">Submit Changes</button>
+        <button class="profile-button" type="button" onclick="EditUserData()">Submit Changes</button>
     </form>
     </aside>   
     <div class="clear"></div>
@@ -89,8 +91,8 @@
             
         </div>
     </div>   
-    <script src="./profileScript.js"> </script>
-    <script src="./script.js"> </script>
+    <script src="./js/profileScript.js"> </script>
+    <script src="./js/script.js"> </script>
 </body>
 
 </html>

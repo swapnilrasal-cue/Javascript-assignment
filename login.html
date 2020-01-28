@@ -10,10 +10,21 @@
 </head>
 
 <body>
+    
  
+  
     <div class="main-container">
-        <div class="table-login">
-            <div class="register-login"> 
+      
+      <div id="success" class="success-messgae">
+        Registration Successfull ....
+       </div>
+      
+       <!-- <div id="failure" class="failure-messgae">
+        Registration failed ....
+       </div> -->
+       
+      <div class="table-login">
+        <div class="register-login"> 
               <a href="./index.html">
                 <div class="tab"> Sign Up </div>
               </a>  
@@ -25,7 +36,7 @@
 
          <form>
           
-           <div class="heading">Login</div>
+           <div class="heading" id="test">Login</div>
  
            <input class="large-area" id="user" type="text" name="uname" value="" placeholder="Email Address*" onchange="valuser(this.value)" required>
            <div class="error-section" id="usernameError" ></div>
@@ -36,7 +47,7 @@
 
     </div>
     </div>   
-    <script src="./login-script.js"></script>
+    <script src="./js/login-script.js"></script>
 </body>
 
 </html>

@@ -10,13 +10,18 @@
 </head>
 
 <body>
-    <div class="body-container">
      
+    <div class="body-container">
+         
+        <div id="success" class="success-messgae">
+            Task Created Successfully ....
+           </div>
+
         <header class="header">
             <div class="header-button">
              <a href="./mainpage.html"><button class="button" type="button" > Home</button></a>  
              <a href="./profile.html"><button class="button" type="button"> Profile</button></a>   
-             <button class="button" type="button" onclick="sessionClear()"> logout</button>
+             <button class="button" type="button" onclick="LogOut()"> logout</button>
 
             </div>
             <div class="clear"></div>
@@ -26,107 +31,96 @@
 
         <h1 class="todo-heading"> todo app</h1>
       <div class="todo-add-container">
-          <form>
              <fieldset style="border: 5px solid black;line-height: 40px; vertical-align: middle;">
-               <!-- <legend style="color: brown;">Create Todo List</legend> -->
+                
+                <span> <label style="color: black;">Filter - </label> </span>
+                <select id = "search" onchange="filter()">
+                    <option value = "All" selected required onchange="filter()">All</option>                   
+                    <option value = "student">Student</option>
+                    <option value = "gym">Gym</option>
+                    <option value = "home">Home</option>
+                    <option value = "personal">Personal</option>    
+                    <option value = "office">Office</option>            
+                   </select>
+    
 
-               <!-- <label class="todo-label">Search</label> -->
-               <input class="todo-input" type="text" placeholder="Search">
+               <input id="searchInput" class="todo-input" type="text" placeholder="Search">
+               <button type="button" class="button-todoapp" onclick="searchTable()">Search</button>
+             
 
-               <label class="todo-label">Category</label>
-               <select id = "myList">
-                 <option value = "1">Student</option>
-                 <option value = "2">Gym</option>
-                 <option value = "3">Job</option>
-                 <option value = "4">important</option>    
-                 <option value = "4">remainder</option>            
-               </select>
-
-               <input class="todo-input" type="" placeholder="filter">
-               <a class="button" style="border: 3px solid black;" href="">add-task</a>
+               <!-- <label class="todo-label">Category</label> -->
+             
+            
+               <!-- <input class="todo-input" type="" placeholder="filter"> -->
+               <button type="button" id="done" class="button-todoapp"  onclick="statusDone();">Done</button> 
+               <button class="button-todoapp" type="button" onclick="activateAddUser()">add-task</button>
+               <button id="deleteButton" class="button-todoapp" onclick="deleteCheckedTodo();">Delete</button>
                <!-- <a class="button" style="border: 3px solid black;" href="">add-task</a> -->
                             
             </fieldset>
-         </form>
-      
-         <div class="add-todo-tasks">
-            <form>
-               <label class="todo-label" for="">todo name</label>
-               <input id="todoName" class="todo-input-add" type="text" name="todo-input" id="todoInput">
-               <div class="clear"></div>
-               <br>               
-               <label class="todo-label" for="">todo category</label>
-               <select id="todoCategory" class="todo-input-add" id = "myList">
-                <option value = "1">Student</option>
-                <option value = "2">Gym</option>
-                <option value = "3">Home</option>
-                <option value = "4">Personal</option>    
-                <option value = "5">Office</option>            
-              </select>
-              <div class="clear"></div>
-              <br>
-               <label class="todo-label" for="">Start Date</label>
-               <input id="todoStartDate" class="todo-input-add" type="date" >
-               <div class="clear"></div>
-               <br> 
-               <br>
-               <label class="todo-label" for="">Due Date</label>
-               <input id="todoDueDate" class="todo-input-add" type="date" >
-               <div class="clear"></div>
-               <br> 
-               <label class="todo-label" for="">Add a Note</label>
-               <input id="todoNote" class="todo-input-add" type="text" name="todo-input" id="todoInput">
-               <br>
-               <label class="todo-label" for="">is Public</label>
-               <input id="todoIsPublic" class="todo-input-add" type="radio" name="ispublic" value="yes">
-               <input type="radio" name="ispublic" value="no">
-               <br>
+       
+            <div id="add-todo-tasks">
+                <form id="form" class="add-todo-form"> 
+                    <!-- <div class="add-todo-form"> -->
+                    <button class="cross-button">&times</button>
+                    <div class="clear"></div>
+                    <br>
+                  <span > <label class="todo-label" for="">todo name</label></span>
+                  <input id="todoName" class="todo-input-add" type="text" id="todoInput">
+                   <div class="clear"></div>
+
+                  <span> <label class="todo-label" for="">todo category</label></span>
+                   <select id="todoCategory" class="todo-input-add" id = "myList">
+                    <option name="category" value = "student">Student</option>
+                    <option name="category" value = "gym">Gym</option>
+                    <option name="category" value = "home">Home</option>
+                    <option name="category" value = "personal">Personal</option>    
+                    <option name="category" value = "office">Office</option>            
+                  </select> 
+                  <div class="clear"></div>
+                  <br>
+                   
+                <span > <label class="todo-label" for="">Start Date</label> </span>
+                   <input id="todoStartDate" class="todo-input-add" type="date" onchange="startDateValidation()">
+                   <div class="clear"></div>
+                 
+                <span>   <label class="todo-label" for="">Due Date</label></span>
+                   <input id="todoDueDate" class="todo-input-add" type="date" onchange="DueDateValidation()">
+                   
+                   <div class="clear"></div>
+                   
+                   <br>   
+                   <button class="button" id="Add" style="padding:10px; width: 20%; margin-left: 100px;" onclick="addTask(); check() ">Add Task</button>
+                   <!-- <button type="button" class="button" onclick="addTodo();" id="add" style="display: inline-block;">Add</button> -->
+                   <button type="button" id="Save" class="add-task-button" onclick="saveChanges();" id="save">Edit</button>
+                <!-- </div> -->
+                   </form>
+             
+            </div>
+
+
+
+         <div>
+             <table id="todoTable">
+              <tr id="list" class="tr">
+                <th>Select</th>
+                <th>Name</th>
+               <th>Category</th>
+               <th>Start Date</th>
+               <th>End Date</th>
+               <th>Status</th>
+               <th>Action</th>
                
-               <button class="button" style="padding:10px; width: 20%; margin-left: 100px;" type="submit" onclick="addTask()">save</button>
-            
-            </form>
+            </tr>
+            <tbody id="todoTableBody"></tbody>
+            </table>
+            <br>
          </div>
 
-        <ul class="todo-list">
-            <li class="list-items"> 
-               <a class="list-items-containts" href=""><input type="checkbox" ></a> 
-               <input  class="todo-input list-items-containts" type="text">
-               <a class="list-items-containts" href=""> remove </a>
-               <div class="clear"></div>
-            </li>
-            <li class="list-items"> 
-                <a class="list-items-containts" href=""><input type="checkbox" ></a> 
-                <input  class="todo-input list-items-containts" type="text">
-                <a class="list-items-containts" href=""> remove </a>
-                <div class="clear"></div> 
-            </li>
-             <li class="list-items"> 
-                <a class="list-items-containts" href=""><input type="checkbox" ></a> 
-                <input  class="todo-input list-items-containts" type="text">
-                <a class="list-items-containts" href=""> remove </a>
-                <div class="clear"></div> 
-            </li>
-             <li class="list-items"> 
-                <a class="list-items-containts" href=""><input type="checkbox" ></a> 
-                <input  class="todo-input list-items-containts" type="text">
-                <a class="list-items-containts" href=""> remove </a>
-                <div class="clear"></div>
-            </li>
-             <li class="list-items"> 
-                <a class="list-items-containts" href=""><input type="checkbox" ></a> 
-                <input  class="todo-input list-items-containts" type="text">
-                <a class="list-items-containts" href=""> remove </a>
-                <div class="clear"></div>
-             </li>
-        </ul>
         </div>
-
-
     </div>    
-
-
     </div>   
-    <script src="./todo.js"> </script>
+    <script src="./js/todo.js"> </script>
 </body>
 
 </html>

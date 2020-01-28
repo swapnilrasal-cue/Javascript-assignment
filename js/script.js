@@ -20,8 +20,7 @@ function ValidateUser()
         document.getElementById("unameError").style.display="block";
         document.getElementById("unameError").style.color="green";
         console.log("proper");
-        reg();   
-        
+        reg();      
         }
 
         else
@@ -127,11 +126,13 @@ function reg(){
                     "password":Password,
                     "address":Address,
                     "pic": Pic,
-                    "gender":Gender
+                    "gender":Gender,
+                    "todoId": 1
                 };
 
-                // var userRecord = JSON.stringify(dataObj);
+                var userRecord = JSON.stringify(dataObj);
                 localStorage.setItem(dataObj.username,userRecord);
+                sessionStorage.setItem('test',5);
                 window.location ="./login.html";
             }
             else
