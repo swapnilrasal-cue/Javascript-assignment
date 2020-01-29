@@ -255,7 +255,6 @@ function DueDateValidation(){
     editData.todoStartDate = document.getElementById("todoStartDate").value;
     editData.todoDueDate = document.getElementById("todoDueDate").value;
     editData.todoCategory = document.getElementById("todoCategory").value;
-    // dateValidation();
     startDateValidation();
     DueDateValidation();
 
