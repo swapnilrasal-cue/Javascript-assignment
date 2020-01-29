@@ -27,7 +27,6 @@ function activateAddUser()
     document.getElementById("add-todo-tasks").style.display="block";
 }
 
-
  // ____________________________ADD NEW RECORD_____________________________
 
 var TaskArr=[];
@@ -63,8 +62,7 @@ function addTask()
         check();
         localStorage.setItem(sessionStorage.getItem("uname"), JSON.stringify(dataObj)); 
         DisplayData();
-        document.getElementById("form").reset();
-        
+        document.getElementById("form").reset();   
         // sessionStorage.removeItem('test');
       }
       else{
@@ -75,7 +73,6 @@ function addTask()
     {
       alert("Fill all details");
     }
-
 }
 
  // ____________________________DISPLAY RECORDS_____________________________
@@ -153,44 +150,14 @@ function DueDateValidation(){
  function deleteCheckedTodo() {
 
     var checkBoxes = todoselect.getElementsByTagName('input');
-    
-    // for(let a = 0; a < checkBoxes.length; a++){
-    //     if(checkBoxes[a].checked != true){
-    //         checkBoxes.splice(a,1);
-    //     }
-    // }
-    // var dataObj = JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    // for(let c = 0; c < checkBoxes.length; c++){
-        // var t = data.todo.length - 1; t >= 0; t--
-        // for(let p = dataObj.todotask.length - 1; p >= 0 ; p--)
-        //    if(dataObj.todotask[p].checked==true){    
-        //         todoTable.deleteRow(p + 1);
-        //         dataObj.todotask.splice(p,1);
-         //    }
-    // }
-    // fetch checked checkboxes
-    // for loop 
-    // document.getElementById("todoName").value = "";
-    // document.getElementById("todoStartDate").value = "";
-    // document.getElementById("todoDueDate").value = "";
-
-    // var dataObj = JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    // var todolist = dataObj.todotask; 
-    
-    // for(var t = 0; t < checkBoxes.length; t++){
-    //     if(checkBoxes[t].checked == true)
-    //         dataObj.todotask.splice(checkBoxes[t].id,1)
-    // }
-
     for (var t = todolist.length - 1; t >= 0; t--) {    
-   
         if (checkBoxes[t].checked == true) {
         todoTable.deleteRow(t + 1);
         todolist.splice(t, 1);
       }
     }
     // dataObj.todotask = todolist;
-    // alert("Deleted ToDo");
+    // alert("Deleted");
     localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
   }
 
@@ -203,7 +170,6 @@ function DueDateValidation(){
         localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
       }
     }
-    // clearList();
     DisplayData();
   }
 
@@ -262,9 +228,7 @@ function DueDateValidation(){
     }
   }
 
-  // let name = document.getElementById("todoName").value;
-  // let date = document.getElementById("todoStartDate").value;
-  // let date1 = document.getElementById("todoDueDate").value;
+// ____________________________________EDIT TODO _________________________________________
 
   function editTodo(i) {
     let editData = todolist[i];
@@ -272,7 +236,6 @@ function DueDateValidation(){
     let todoCategory = editData.todoCategory;
     let todoStartDate = editData.todoStartDate;
     let todoDueDate = editData.todoDueDate;
-    
   
     document.getElementById("todoName").value = todoName;
     document.getElementById("todoStartDate").value = todoStartDate;
@@ -283,6 +246,8 @@ function DueDateValidation(){
     document.getElementById("Save").style.display = "block";
     e = i;
   }
+
+// _____________________________SAVE CHANGES AFTER EDIT ____________________________________
 
   function saveChanges() {
     let editData = todolist[e];
@@ -312,21 +277,18 @@ function DueDateValidation(){
     }
   }
 
-  // ___________________________________SUCCESS MESSAGE __________________________________
+// ___________________________________SUCCESS MESSAGE __________________________________
 
 function check()
 {
   let p = sessionStorage.getItem('test')
   if(p == 5){
-     // document.getElementById("test").innerHTML = 'kasjckasjhckasjhck'
       console.log("Signup Sucessful");
-      document.getElementById("success").style.display="block";
-      
+      document.getElementById("success").style.display="block";      
   }
   else
   {
       console.log("Signup Sucessful");
       document.getElementById("failure").style.display="block";
   }
-
 }

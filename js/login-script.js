@@ -3,7 +3,6 @@
 (function(){
     let p = sessionStorage.getItem('test')
     if(p == 5){
-       // document.getElementById("test").innerHTML = 'kasjckasjhckasjhck'
         console.log("Signup Sucessful");
         document.getElementById("success").style.display="block";
         sessionStorage.removeItem('test')
@@ -15,6 +14,7 @@
     }
 })();
 
+// _________________________________VALIDATE USERNAME __________________________________
 
 function valuser(username)
 {
@@ -35,14 +35,14 @@ function valuser(username)
     }
 }
 
+// ____________________________VALIDATE USERNAME AND PASSWORD FOR LOGIN_____________________________
+
 function checklogin()
 {
             var username = document.getElementById("user").value;
             var userpass = document.getElementById("pass").value;
             var userDetails = JSON.parse(localStorage.getItem(username));
             //     console.log(userDetails);
-            // var check=userDetails.password;
-            // console.log(check);
             if(localStorage.getItem(username)){
                 console.log("user Found");
                

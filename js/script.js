@@ -1,3 +1,5 @@
+// __________________________________________VALIDATE USER______________________________________________
+
 function ValidateUser()
 {
     var UserName = document.getElementById("username").value;
@@ -36,6 +38,9 @@ function ValidateUser()
     }
 }
 
+// __________________________________________VALIDATE PASSWORD______________________________________________
+
+
 function validatePass(Password){
     
     if( Password.length < 8)
@@ -53,6 +58,8 @@ function validatePass(Password){
         console.log("strong");
     }
 }
+
+// __________________________________________VALIDATE FIRSTNAME______________________________________________
 
 function ValidatefName(firstname)
       { 
@@ -74,6 +81,9 @@ function ValidatefName(firstname)
             
       }
 
+// __________________________________________VALIDATE LASTNAME______________________________________________
+      
+
 function ValidatelName(LastName)
 { 
            if (!LastName.match(/^[a-zA-Z]+$/)) 
@@ -92,6 +102,9 @@ function ValidatelName(LastName)
         }    
 }
 
+// ___________________________IMAGE TO STRING - PROFILE PIC__________________________________________
+
+
 function PreviewImage(){
     var oFReader = new FileReader();
     oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
@@ -103,9 +116,11 @@ function PreviewImage(){
     }
 }
 
+// ____________________________________REGISTER USER RECORD___________________________________________
+
+
 function reg(){
-        // var userArray=[];
-         
+
         var UserName = document.getElementById("username").value;
         var FirstName = document.getElementById("firstname").value;
         var LastName = document.getElementById("lastname").value;
@@ -148,5 +163,3 @@ function reg(){
             document.getElementById("all-error-message").style.color="red";
         }
 }
-
- 

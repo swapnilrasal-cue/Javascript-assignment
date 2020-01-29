@@ -3,7 +3,6 @@
 (function(){
     let p = sessionStorage.getItem('test')
     if(p == 5){
-       // document.getElementById("test").innerHTML = 'kasjckasjhckasjhck'
         console.log("profile edited Sucessful");
         document.getElementById("success").style.display="block";
         sessionStorage.removeItem('test')
@@ -15,6 +14,9 @@
     }
 })();
 
+// _______________________ASSIGN VALUE TO PROFILE PAGE __________________________________
+
+
 function assignval(){
     var testuid=document.getElementById("username");
     var testfname=document.getElementById("firstname");
@@ -24,11 +26,6 @@ function assignval(){
     // var testpic=document.getElementById("uploadImage");
     var userImage = document.getElementById("uploadPreview");
     var testgen=document.getElementById("gen");
-    
-    console.log(testuid);
-    console.log(testfname);
-    console.log(testlname);
-    console.log(testpass);
     console.log(testaddr);
     var test2=JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
     testuid.value=test2.username;
@@ -38,14 +35,10 @@ function assignval(){
     testaddr.value=test2.address;
     userImage.src = test2.pic;
     testgen.value=test2.gender;
-
-    // var userImg= test2.pic;
-    
-    // console.log(userImg);
-    // document.getElementById("profileDp").src="userImg";
-    // setprofilePic();
-
 }
+
+// _______________________ASSIGN VALUE TO EDIT PROFILE PAGE ______________________________
+
 
 function assignval2()
 {
@@ -56,18 +49,9 @@ function assignval2()
     var testaddr=document.getElementById("address");
     // var testpic=document.getElementById("uploadImage");
     var userImage = document.getElementById("uploadPreview");
-    var testgen=document.getElementById("gen");
-
-    var testgen1=document.getElementsByTagName('input[type=radio]')
-    
-    // console.log(testuid);
-    // console.log(testfname);
-    // console.log(testlname);
-    // console.log(testpass);
-    // console.log(testaddr);
+    // var testgen=document.getElementById("gen");
 
     var test2=JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    
     console.log(test2.gender)
 
     testuid.value=test2.username;
@@ -87,10 +71,9 @@ function assignval2()
     else if(test2.gender == "Other"){
         document.getElementById("Other").checked = true
     }
-    // document.getElementById(test2.gender).checked = true;
-
  }
 
+// __________________________________LOGOUT USER________________________________________
 
 function sessionClear()
 {
@@ -98,6 +81,7 @@ sessionStorage.clear();
 window.location="./login.html";
 }
 
+// __________________________________EDIT USER PROFILE__________________________________
 
 function EditUserData(){
     var test3=JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
@@ -108,13 +92,6 @@ function EditUserData(){
     var Address = document.getElementById("address").value;
     var Pic = document.getElementById("uploadPreview").src;
     var Gender = document.querySelector('input[name=gen]:checked').value;
-    // var Gender = document.getElementById("gen").value;
-      
-    // if(UserName !== "" && FirstName!== "" && LastName!=="" && Password !== "" && Address !== "" && Pic !== "" && Gender !== "")
-    // {
-        // var dataObj={"username":UserName,"firstname":FirstName,"lastname":LastName,"password":Password,"address":Address,"pic":Pic,"gender":Gender};
-        // userArray.push(dataObj);
-        // var userRecord = JSON.stringify(dataObj);
         
         test3.username = document.getElementById("username").value;
         test3.firstname= document.getElementById("firstname").value;
@@ -129,11 +106,8 @@ function EditUserData(){
         localStorage.setItem(test3.username,userRecord);
         sessionStorage.setItem('test',5);
         window.location="./profile.html";
-    // }
-    // else{
-    //     alert("All Fields are Required");
-    // }
      }
+
 
 // function setprofilePic(){
 //     var userDp=localStorage.getItem("pic");
@@ -141,13 +115,13 @@ function EditUserData(){
 //     document.getElementById("profileDp").src="userDp";
 // }
 
+// __________________________________PREVENT BACK_______________________________________
 
 function preventBack() { window.history.forward(); }
 setTimeout("preventBack()", 0);
 window.onunload = function () { null };
 
-
-
+// __________________________________VALIDATE PASSWORD__________________________________
 
 function validatePass(Password){
     
@@ -167,9 +141,10 @@ function validatePass(Password){
     }
 }
 
+// __________________________________VALIDATE FIRSTNAME__________________________________
+
 function ValidatefName(firstname)
-      { 
-          
+      {           
         if (!firstname.match(/^[a-zA-Z]+$/)) 
         {
             document.getElementById("fnameError").innerHTML="Only Alphabets are Allowed";
@@ -183,9 +158,10 @@ function ValidatefName(firstname)
             document.getElementById("fnameError").style.display="block";
             document.getElementById("fnameError").style.color="green";
             return true;    
-        }    
-            
+        }          
       }
+
+// __________________________________VALIDATE LASTNAME____________________________________
 
 function ValidatelName(LastName)
 { 
