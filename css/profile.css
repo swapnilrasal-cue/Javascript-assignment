@@ -1,0 +1,11 @@
+.cursorNotAllowed{
+    cursor: not-allowed;
+}
+
+
+button{
+    cursor: pointer;
+}
+.button{
+    cursor: pointer;
+}

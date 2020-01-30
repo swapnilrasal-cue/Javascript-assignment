@@ -23,13 +23,13 @@ function valuser(username)
     if(localStorage.getItem(username)){
         console.log("user Found");
         document.getElementById("usernameError").style.display="block";
-        document.getElementById("usernameError").innerHTML="user Found";
+        document.getElementById("usernameError").innerHTML="&#x2713";
         document.getElementById("usernameError").style.color="green";
     }      
     else{
         console.log("user Not Found");
         document.getElementById("usernameError").style.display="block";
-        document.getElementById("usernameError").innerHTML="user Not Found";
+        document.getElementById("usernameError").innerHTML="Invalid UserName or Password";
         document.getElementById("usernameError").style.color="red";
        
     }
@@ -47,9 +47,9 @@ function checklogin()
                 console.log("user Found");
                
                 if(userDetails.password !== userpass){
-                    console.log("wrong Password Try Again");
+                    console.log("Invalid UserName or Password");
                     document.getElementById("passwordError").style.display="block";
-                    document.getElementById("passwordError").innerHTML="wrong Password Try Again";
+                    document.getElementById("passwordError").innerHTML="Invalid UserName Or Password";
                     document.getElementById("passwordError").style.color="red";
                 }
                 else{
@@ -60,7 +60,9 @@ function checklogin()
                 }
             }      
             else{
-                console.log("user Not Found");
-            }
+                document.getElementById("passwordError").style.display="block";
+                document.getElementById("passwordError").innerHTML="Invalid UserName Or Password";
+                document.getElementById("passwordError").style.color="red";           
+             }
 }
 

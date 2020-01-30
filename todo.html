@@ -3,13 +3,14 @@
 
 <head>
     <title>Profile Page</title>
-    <link rel="stylesheet" href="./css/master.css">
+    <!-- <link rel="stylesheet" href="./css/master.css"> -->
+    <link rel="stylesheet" href="./css/todo.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap" rel="stylesheet">
 
 </head>
 
-<body>
+<body onload="checkIsEmpty()">
      
     <div class="body-container">
          
@@ -29,9 +30,14 @@
       
     <div class="todo-container">
 
-        <h1 class="todo-heading"> todo app</h1>
+        <h1 class="todo-heading"> Todo Application</h1>
+        <!-- <a class="button-create-todo-task" href="createTask.html">Create Todo Task</a> -->
+        <!-- <button  type="button" class="button-create-todo-task" onclick="activateAddUser()">Create Todo Task</button> -->
+
+        <button  type="button" class="button-create-todo-task" onclick="addTodoTask()">Create Todo Task</button>
+
       <div class="todo-add-container">
-             <fieldset style="border: 5px solid black;line-height: 40px; vertical-align: middle;">
+             <fieldset class="todo-filter-block">
                 
                 <span> <label style="color: black;">Filter - </label> </span>
                 <select id = "search" onchange="filter()">
@@ -65,11 +71,14 @@
                     <button class="cross-button">&times</button>
                     <div class="clear"></div>
                     <br>
-                  <span > <label class="todo-label" for="">todo name</label></span>
+
+                    <span class="required-field"> * </span>  
+                  <span > <label class="todo-label" for="">Todo Name</label></span>
                   <input id="todoName" class="todo-input-add" type="text" id="todoInput">
                    <div class="clear"></div>
 
-                  <span> <label class="todo-label" for="">todo category</label></span>
+                   <span class="required-field"> * </span>
+                  <span> <label class="todo-label" for="">Todo Category</label></span>
                    <select id="todoCategory" class="todo-input-add" id = "myList">
                     <option name="category" value = "student">Student</option>
                     <option name="category" value = "gym">Gym</option>
@@ -80,10 +89,13 @@
                   <div class="clear"></div>
                   <br>
                    
+                  <span class="required-field"> * </span>
                 <span > <label class="todo-label" for="">Start Date</label> </span>
-                   <input id="todoStartDate" class="todo-input-add" type="date" onchange="startDateValidation()">
-                   <div class="clear"></div>
+                   
+                <input id="todoStartDate" class="todo-input-add" type="date" onchange="startDateValidation()">
+                <div class="clear"></div>
                  
+                   <span class="required-field"> * </span>
                 <span>   <label class="todo-label" for="">Due Date</label></span>
                    <input id="todoDueDate" class="todo-input-add" type="date" onchange="DueDateValidation()">
                    
@@ -98,9 +110,11 @@
              
             </div>
 
+         <br>
+         <br>
+            <div id="noRecord" class="noData">No Todo Record !!</div>
 
-
-         <div>
+         <div id="todoTableBox" class="todoDataTable">
              <table id="todoTable">
               <tr id="list" class="tr">
                 <th>Select</th>

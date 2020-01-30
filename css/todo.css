@@ -1,3 +1,10 @@
+.todo-add-container{
+    text-align: left;
+    margin-top: 5%;
+    /* background-color: hotpink; */
+    /* display: none; */
+    }
+
 /*css file*/
 
 * {
@@ -155,9 +162,9 @@ textarea{
 
 .required-field{
 color: red;
-font-size: 30px;
+font-size: 25px;
 margin-left: 5px;
-text-align: left;
+text-align: center;
 }
 
 
@@ -339,15 +346,16 @@ float: right;
 
 .todo-container{
     width: 100%;
-    /* background-color: orangered; */
-    background-color: rgb(75, 126, 180);
+    height: 600px;
+    background-color: white;
+    /* background-color: rgb(75, 126, 180); */
 
 }
 
 .todo-heading{
     font-size: 40px;
     padding: 15px 0px;  
-    color: white;
+    color: #9daef5;
     font-weight: 700;
    margin-top: 0px;
    text-shadow: black 4px 4px; 
@@ -472,3 +480,38 @@ background-color: green;
     margin: auto;
     background-color: red ;
     }
+
+
+.button-create-todo-task{
+        background:  #eb94d0;
+        background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+        border-radius: 30px;
+        text-shadow: 3px 2px 1px #9daef5;
+        font-family: Arial;  color: black;
+        margin-right: 2%;
+        width: 40%;
+        font-size: 20px;
+        padding: 10px 30px;
+    }    
+.button-create-todo-task:hover{
+    background: #2079b0;
+    background-image: linear-gradient(to bottom, #2079b0, #eb94d0);
+    text-decoration: none;
+}    
+
+
+.todo-filter-block{
+background-color: #9daef5;
+}
+
+.todoDataTable{
+display: none;
+}
+
+.noData{
+    /* margin-top: 5%; */
+    text-align: center;
+    margin: auto;
+    display: none;
+    color: black;
+}

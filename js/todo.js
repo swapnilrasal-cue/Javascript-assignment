@@ -291,3 +291,22 @@ function check()
       document.getElementById("failure").style.display="block";
   }
 }
+
+
+function addTodoTask(){
+  window.location ="./addTask.html";
+}
+
+function checkIsEmpty()
+{
+  if(todolist == "")
+  {
+    alert("No Todo Record");
+    document.getElementById("noRecord").style.display="block";
+  }
+  else
+  {
+    // alert("Record Found");
+    document.getElementById("todoTableBox").style.display="block";
+  }
+}

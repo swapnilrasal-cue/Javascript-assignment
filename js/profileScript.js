@@ -1,3 +1,8 @@
+var userPassFlag = true;
+var userFnameFlag = true;
+var userLnameFlag = true;
+var userAddressFlag = true; 
+
 // ___________________________________SUCCESS MESSAGE __________________________________
 
 (function(){
@@ -103,9 +108,21 @@ function EditUserData(){
         
         console.log(test3);
         var userRecord = JSON.stringify(test3);
-        localStorage.setItem(test3.username,userRecord);
-        sessionStorage.setItem('test',5);
-        window.location="./profile.html";
+
+        // console.log('userPassFlag',userPassFlag)
+        // console.log('userFnameFlag',userFnameFlag)
+        // console.log('userLnameFlag',userLnameFlag)
+        if(userPassFlag && userFnameFlag && userLnameFlag && userAddressFlag)
+        {
+            localStorage.setItem(test3.username,userRecord);
+            sessionStorage.setItem('test',5);
+            window.location="./profile.html";
+        }
+        else
+        {
+            alert("You Must Fill In All Of The Fields Properly");
+        }
+        
      }
 
 
@@ -121,63 +138,153 @@ function preventBack() { window.history.forward(); }
 setTimeout("preventBack()", 0);
 window.onunload = function () { null };
 
-// __________________________________VALIDATE PASSWORD__________________________________
+// // __________________________________VALIDATE PASSWORD__________________________________
+
+// function validatePass(Password){
+    
+//     if( Password.length < 8)
+//     {
+//         document.getElementById("passError").innerHTML="Weak Password - * Password Should Be Atleast 9-15 Charachers *";
+//         document.getElementById("passError").style.display="block";
+//         document.getElementById("passError").style.color="red";
+//         console.log("weak");
+//     }
+//     else
+//     {
+//         document.getElementById("passError").innerHTML="&#x2713";
+//         document.getElementById("passError").style.display="block";
+//         document.getElementById("passError").style.color="green";
+//         console.log("strong");
+//     }
+// }
+
+// // __________________________________VALIDATE FIRSTNAME__________________________________
+
+// function ValidatefName(firstname)
+//       {           
+//         if (!firstname.match(/^[a-zA-Z]+$/)) 
+//         {
+//             document.getElementById("fnameError").innerHTML="Invalid FirstName";
+//             document.getElementById("fnameError").style.display="block";
+//             document.getElementById("fnameError").style.color="red";
+//             return false;
+//         }
+//         else
+//         {
+//             document.getElementById("fnameError").innerHTML="&#x2713";
+//             document.getElementById("fnameError").style.display="block";
+//             document.getElementById("fnameError").style.color="green";
+//             return true;    
+//         }          
+//       }
+
+// // __________________________________VALIDATE LASTNAME____________________________________
+
+// function ValidatelName(LastName)
+// { 
+//            if (!LastName.match(/^[a-zA-Z]+$/)) 
+//         {
+//             document.getElementById("lnameError").innerHTML="Only Alphabets are Allowed";
+//             document.getElementById("lnameError").style.display="block";
+//             document.getElementById("lnameError").style.color="red";
+//             return false;
+//         }
+//         else
+//         {
+//             document.getElementById("lnameError").innerHTML="&#x2713";
+//             document.getElementById("lnameError").style.display="block";
+//             document.getElementById("lnameError").style.color="green";
+//             return true;    
+//         }    
+// }
+
+// __________________________________________VALIDATE PASSWORD______________________________________________
+
 
 function validatePass(Password){
     
+    // userPassFlag = false;
     if( Password.length < 8)
-    {
-        document.getElementById("passError").innerHTML="Weak password - * Password should be atleast 9-15 charachers *";
+    {   
+        document.getElementById("passError").innerHTML="Weak password - * Password Should Be Atleast 9-15 Charachers *";
         document.getElementById("passError").style.display="block";
         document.getElementById("passError").style.color="red";
         console.log("weak");
+        userPassFlag=false;
     }
     else
     {
-        document.getElementById("passError").innerHTML="Strong Password";
+        document.getElementById("passError").innerHTML="&#x2713";
         document.getElementById("passError").style.display="block";
         document.getElementById("passError").style.color="green";
         console.log("strong");
+        userPassFlag=true;
     }
 }
 
-// __________________________________VALIDATE FIRSTNAME__________________________________
+// __________________________________________VALIDATE FIRSTNAME______________________________________________
 
 function ValidatefName(firstname)
-      {           
+      { 
+          userFnameFlag = false;
         if (!firstname.match(/^[a-zA-Z]+$/)) 
         {
-            document.getElementById("fnameError").innerHTML="Only Alphabets are Allowed";
+            document.getElementById("fnameError").innerHTML="Please Enter Valid FirstName";
             document.getElementById("fnameError").style.display="block";
             document.getElementById("fnameError").style.color="red";
-            return false;
+            userFnameFlag=false;
         }
         else
         {
-            document.getElementById("fnameError").innerHTML="Name Available";
+            document.getElementById("fnameError").style.display="none";
+            document.getElementById("fnameError").innerHTML="&#x2713";
             document.getElementById("fnameError").style.display="block";
             document.getElementById("fnameError").style.color="green";
-            return true;    
-        }          
+            userFnameFlag=true;
+        }    
+            
       }
 
-// __________________________________VALIDATE LASTNAME____________________________________
+// __________________________________________VALIDATE LASTNAME______________________________________________
+      
 
 function ValidatelName(LastName)
 { 
+       userLnameFlag = false;
            if (!LastName.match(/^[a-zA-Z]+$/)) 
         {
-            document.getElementById("lnameError").innerHTML="Only Alphabets are Allowed";
+            document.getElementById("lnameError").innerHTML="Please Enter Valid LastName";
             document.getElementById("lnameError").style.display="block";
             document.getElementById("lnameError").style.color="red";
-            return false;
+            userLnameFlag=false;
         }
         else
         {
-            document.getElementById("lnameError").innerHTML="Name Available";
+            document.getElementById("lnameError").innerHTML="&#x2713";
             document.getElementById("lnameError").style.display="block";
             document.getElementById("lnameError").style.color="green";
-            return true;    
+            userLnameFlag=true;
         }    
 }
 
+// __________________________________________VALIDATE ADDRESS______________________________________________
+      
+
+function ValidatelAddress(Address)
+{ 
+       userAddressFlag = false;
+        if(Address == "") 
+        {
+            document.getElementById("addressError").innerHTML="Please Enter Valid Address";
+            document.getElementById("addressError").style.display="block";
+            document.getElementById("addressError").style.color="red";
+            userAddressFlag=false;
+        }
+        else
+        {
+            document.getElementById("addressError").innerHTML="&#x2713";
+            document.getElementById("addressError").style.display="block";
+            document.getElementById("addressError").style.color="green";
+            userAddressFlag=true;
+        }    
+}

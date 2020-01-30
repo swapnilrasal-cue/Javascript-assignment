@@ -1,3 +1,8 @@
+var userNameFlag=false;
+var userPassFlag=false;
+var userFnameFlag=false;
+var userLnameFlag=false;
+
 // __________________________________________VALIDATE USER______________________________________________
 
 function ValidateUser()
@@ -14,28 +19,52 @@ function ValidateUser()
     var dataObj={"username":UserName,"firstname":FirstName,"lastname":LastName,"password":Password,"address":Address,"pic":Pic,"gender":Gender};
     var userRecord = JSON.stringify(dataObj);
 
-    if(!localStorage.getItem(UserName)){  
+    if(UserName !== "" && FirstName!== "" && LastName!=="" && Password !== "" && Address !== "" && Pic !== "" && Gender !== "")
+    {  
+       if(userNameFlag == true && userPassFlag == true && userFnameFlag == true && userLnameFlag == true)
+       {
+           reg();
+       }
+    
+    }
+    else{
+    alert("You Must Fill In All Of The Fields");
+    }
+}
+
+// __________________________________________VALIDATE USERNAME______________________________________________
+
+
+function ValidateUserName()
+{
+    var UserName = document.getElementById("username").value;
+   
+      if(!localStorage.getItem(UserName)){  
         
         if(UserName.match(/.+@(cuelogic)\.com$/))
-        { 
-        document.getElementById("unameError").innerHTML="UserName* Available";
-        document.getElementById("unameError").style.display="block";
-        document.getElementById("unameError").style.color="green";
-        console.log("proper");
-        reg();      
-        }
-
+          { 
+            document.getElementById("unameError").innerHTML="&#x2713";
+            document.getElementById("unameError").style.display="block";
+            document.getElementById("unameError").style.color="green";
+            console.log("proper");
+            userNameFlag=true;
+          }
         else
-        {
-            alert("incorrect domain only cuelogic.com is allowed");
-        }
+          {
+            document.getElementById("unameError").innerHTML="Incorrect Domain Only cuelogic.com is Allowed";
+            document.getElementById("unameError").style.display="block";
+            document.getElementById("unameError").style.color="red";
+            userNameFlag=false;
+          }
         
-    }else
-    {
-        document.getElementById("unameError").innerHTML="UserName* Already Exist";
-        document.getElementById("unameError").style.display="block";
-        document.getElementById("unameError").style.color="red";
-    }
+        }
+        else
+         {
+           document.getElementById("unameError").innerHTML="UserName* Already Exist";
+           document.getElementById("unameError").style.display="block";
+           document.getElementById("unameError").style.color="red";
+         }
+        
 }
 
 // __________________________________________VALIDATE PASSWORD______________________________________________
@@ -45,17 +74,19 @@ function validatePass(Password){
     
     if( Password.length < 8)
     {
-        document.getElementById("passError").innerHTML="Weak password - * Password should be atleast 9-15 charachers *";
+        document.getElementById("passError").innerHTML="Weak password - * Password Should Be Atleast 9-15 Charachers *";
         document.getElementById("passError").style.display="block";
         document.getElementById("passError").style.color="red";
         console.log("weak");
+        userPassFlag=false;
     }
     else
     {
-        document.getElementById("passError").innerHTML="Strong Password";
+        document.getElementById("passError").innerHTML="&#x2713";
         document.getElementById("passError").style.display="block";
         document.getElementById("passError").style.color="green";
         console.log("strong");
+        userPassFlag=true;
     }
 }
 
@@ -66,17 +97,18 @@ function ValidatefName(firstname)
           
         if (!firstname.match(/^[a-zA-Z]+$/)) 
         {
-            document.getElementById("fnameError").innerHTML="Only Alphabets are Allowed";
+            document.getElementById("fnameError").innerHTML="Please Enter Valid FirstName";
             document.getElementById("fnameError").style.display="block";
             document.getElementById("fnameError").style.color="red";
-            return false;
+            userFnameFlag=false;
         }
         else
         {
-            document.getElementById("fnameError").innerHTML="Name Available";
+            document.getElementById("fnameError").style.display="none";
+            document.getElementById("fnameError").innerHTML="&#x2713";
             document.getElementById("fnameError").style.display="block";
             document.getElementById("fnameError").style.color="green";
-            return true;    
+            userFnameFlag=true;
         }    
             
       }
@@ -88,17 +120,17 @@ function ValidatelName(LastName)
 { 
            if (!LastName.match(/^[a-zA-Z]+$/)) 
         {
-            document.getElementById("lnameError").innerHTML="Only Alphabets are Allowed";
+            document.getElementById("lnameError").innerHTML="Please Enter Valid LastName";
             document.getElementById("lnameError").style.display="block";
             document.getElementById("lnameError").style.color="red";
-            return false;
+            userLnameFlag=false;
         }
         else
         {
-            document.getElementById("lnameError").innerHTML="Name Available";
+            document.getElementById("lnameError").innerHTML="&#x2713";
             document.getElementById("lnameError").style.display="block";
             document.getElementById("lnameError").style.color="green";
-            return true;    
+            userLnameFlag=true;
         }    
 }
 
@@ -129,11 +161,6 @@ function reg(){
         var Pic = document.getElementById("uploadPreview").src;
         var Gender = document.querySelector('input[name=gen]:checked').value;
         
-        if(UserName !== "" && FirstName!== "" && LastName!=="" && Password !== "" && Address !== "" && Pic !== "" && Gender !== "")
-        {  
-
-            if(Password.length > 8)
-            {
                 var dataObj= {
                     "username":UserName,
                     "firstname":FirstName,
@@ -142,24 +169,14 @@ function reg(){
                     "address":Address,
                     "pic": Pic,
                     "gender":Gender,
-                    "todoId": 1
+                    "todoId": 1 ,
+                    "todotask":[],
                 };
 
                 var userRecord = JSON.stringify(dataObj);
                 localStorage.setItem(dataObj.username,userRecord);
                 sessionStorage.setItem('test',5);
                 window.location ="./login.html";
-            }
-            else
-            {
-              document.getElementById("passError").innerHTML="Weak password - * Password should be atleast 9-15 charachers *";
-              document.getElementById("passError").style.display="block";
-              document.getElementById("passError").style.color="red";
-              console.log("weak");
-            }
-        }
-        else{
-            document.getElementById("all-error-message").innerHTML="All Fields are Required ";
-            document.getElementById("all-error-message").style.color="red";
-        }
+                document.getElementById("registrationForm").reset();
+  
 }
