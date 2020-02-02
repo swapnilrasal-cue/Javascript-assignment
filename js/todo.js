@@ -6,6 +6,7 @@ var todoselect = document.getElementById("todoTable");
 var checkBoxes = todoselect.getElementsByTagName('input');
 var startDate = false;
 var dueDate = false;
+var UserInputFlag = false; 
 // ________________________LOGOUT FUNCTION________________________
 
 function LogOut()
@@ -20,60 +21,12 @@ window.location="./login.html";
 DisplayData();
 })();
 
- // ___________________________POP UP ADD TASK_____________________________
+//  // ___________________________POP UP ADD TASK_____________________________
 
-function activateAddUser()
-{
-    document.getElementById("add-todo-tasks").style.display="block";
-}
-
- // ____________________________ADD NEW RECORD_____________________________
-
-var TaskArr=[];
-function addTask()
-{
-    var TodoName = document.getElementById("todoName").value;
-    var TodoCategory = document.getElementById("todoCategory").value;
-    var StartDate = document.getElementById("todoStartDate").value;
-    var DueDate = document.getElementById("todoDueDate").value;
- 
-    var taskObj={
-            "todoName":TodoName,
-            "todoCategory":TodoCategory,
-            "todoStartDate":StartDate,
-            "todoDueDate":DueDate,
-            "status" : "Pending", 
-    }
-
-    var dataObj = JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    taskObj.todoid = dataObj.todoId;
-    dataObj.todoId++;
-    if(dataObj.todotask === undefined || dataObj.todotask === null){
-        dataObj.todotask = [];
-    }
-
-    if(TodoName != "" && StartDate != "" && DueDate != "" && TodoCategory != "")
-    {
-      if(startDate == true && dueDate == true)
-      {
-        console.log(todoName);
-        dataObj.todotask.push(taskObj);
-        sessionStorage.setItem('test',5);
-        check();
-        localStorage.setItem(sessionStorage.getItem("uname"), JSON.stringify(dataObj)); 
-        DisplayData();
-        document.getElementById("form").reset();   
-        // sessionStorage.removeItem('test');
-      }
-      else{
-        alert("invalid date");
-      }      
-    }
-    else
-    {
-      alert("Fill all details");
-    }
-}
+// function activateAddUser()
+// {
+//     document.getElementById("add-todo-tasks").style.display="block";
+// }
 
  // ____________________________DISPLAY RECORDS_____________________________
 
@@ -99,8 +52,7 @@ function addTask()
          list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick="deleteTodo(' + i + ');">Delete</button>' + "</td>"; 
          }
      else {
-        list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick="activateAddUser(); editTodo(' + i + '); disableDone(' + i + ');">Edit</button>' + "</td>";
-        
+        list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick=" editTodo(' + i + ');">Edit</button>' + "</td>";
      }
       table.appendChild(list);
 
@@ -193,12 +145,22 @@ function DueDateValidation(){
         let text = td.innerHTML;
         if (text.match(search)) {
           tr[i].style.display = "";
+          // alert("found");
+          document.getElementById("noRecordFound").style.display="none";
+          document.getElementById("todoTableBox").style.display="block";
+
         }
         else if (search == "All") {
           tr[i].style.display = "";
+          // alert("found");
+          document.getElementById("noRecordFound").style.display="none";
+          document.getElementById("todoTableBox").style.display="block";
         }
         else {
+          document.getElementById("noRecordFound").style.display="block";
+          document.getElementById("todoTableBox").style.display="none";
           tr[i].style.display = "none";
+          // alert("Not found");
         }
       }
     }
@@ -221,8 +183,12 @@ function DueDateValidation(){
         }
         if (found) {
             tr[i].style.display = "";
+            document.getElementById("noRecordFound").style.display="none";
+            document.getElementById("todoTableBox").style.display="block";
             found = false;
         } else {
+          document.getElementById("todoTableBox").style.display="none";
+          document.getElementById("noRecordFound").style.display="block";
             tr[i].style.display = "none";
         }
     }
@@ -231,50 +197,61 @@ function DueDateValidation(){
 // ____________________________________EDIT TODO _________________________________________
 
   function editTodo(i) {
-    let editData = todolist[i];
-    let  todoName= editData.todoName;
-    let todoCategory = editData.todoCategory;
-    let todoStartDate = editData.todoStartDate;
-    let todoDueDate = editData.todoDueDate;
-  
-    document.getElementById("todoName").value = todoName;
-    document.getElementById("todoStartDate").value = todoStartDate;
-    document.getElementById("todoDueDate").value = todoDueDate;
-    document.getElementById("todoCategory").value = todoCategory;
+    console.log(i);
+    var index=i;
+    sessionStorage.setItem("index",index);
+    window.location="./editTask.html";
 
-    document.getElementById("Add").style.display = "none";
-    document.getElementById("Save").style.display = "block";
-    e = i;
+    // let editData = todolist[i];
+    // let  todoName= editData.todoName;
+    // let todoCategory = editData.todoCategory;
+    // let todoStartDate = editData.todoStartDate;
+    // let todoDueDate = editData.todoDueDate;
+     
+    // document.getElementById("Name").value = todoName;
+    // document.getElementById("StartDate").value = todoStartDate;
+    // document.getElementById("DueDate").value = todoDueDate;
+    // document.getElementById("Category").value = todoCategory;
+
+    // window.location="./editTask.html";
+    // document.getElementById("todoName").value = todoName;
+    // document.getElementById("todoStartDate").value = todoStartDate;
+    // document.getElementById("todoDueDate").value = todoDueDate;
+    // document.getElementById("todoCategory").value = todoCategory;
+
+    // document.getElementById("Add").style.display = "none";
+    // document.getElementById("Save").style.display = "block";
+    // e = i;
   }
 
-// _____________________________SAVE CHANGES AFTER EDIT ____________________________________
+// // _____________________________SAVE CHANGES AFTER EDIT ____________________________________
 
-  function saveChanges() {
-    let editData = todolist[e];
-    editData.todoName = document.getElementById("todoName").value;
-    editData.todoStartDate = document.getElementById("todoStartDate").value;
-    editData.todoDueDate = document.getElementById("todoDueDate").value;
-    editData.todoCategory = document.getElementById("todoCategory").value;
-    startDateValidation();
-    DueDateValidation();
+//   function saveChanges() {
+//     let editData = todolist[e];
+//     editData.todoName = document.getElementById("todoName").value;
+//     editData.todoStartDate = document.getElementById("todoStartDate").value;
+//     editData.todoDueDate = document.getElementById("todoDueDate").value;
+//     editData.todoCategory = document.getElementById("todoCategory").value;
+//     startDateValidation();
+//     DueDateValidation();
 
-    if(editData.todoName != "" && editData.todoStartDate != "" && editData.todoDueDate != "" && editData.todoCategory != "")
-    {
-      if(startDate == true && dueDate == true)
-      { 
-        localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
-        DisplayData();
-        document.getElementById("form").reset();
-      }
-      else{
-        alert("invalid date");
-      }      
-    }
-    else
-    {
-      alert("Fill all details");
-    }
-  }
+//     if(editData.todoName != "" && editData.todoStartDate != "" && editData.todoDueDate != "" && editData.todoCategory != "")
+//     {
+//       if(startDate == true && dueDate == true)
+//       { 
+//         localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
+//         DisplayData();
+//         document.getElementById("form").reset();
+//       }
+//       else{
+//         alert("invalid date");
+//       }      
+//     }
+//     else
+//     {
+//       alert("Fill all details");
+//     }
+//   }
 
 // ___________________________________SUCCESS MESSAGE __________________________________
 
@@ -308,5 +285,22 @@ function checkIsEmpty()
   {
     // alert("Record Found");
     document.getElementById("todoTableBox").style.display="block";
+  }
+}
+
+function clearFilter()
+{
+  window.location.reload();
+}
+
+function emptySearch(){
+  //  var UserInput = document.getElementById("searchInput").value;
+  if(UserInputFlag == false)
+  {
+     document.getElementById("SearchBtn2").style.Display="block";
+  }   
+  else
+  {    
+    document.getElementsById("SearchBtn1").style.Display="block";
   }
 }

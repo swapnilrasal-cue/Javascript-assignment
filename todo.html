@@ -10,7 +10,7 @@
 
 </head>
 
-<body onload="checkIsEmpty()">
+<body onload="checkIsEmpty();">
      
     <div class="body-container">
          
@@ -31,16 +31,15 @@
     <div class="todo-container">
 
         <h1 class="todo-heading"> Todo Application</h1>
-        <!-- <a class="button-create-todo-task" href="createTask.html">Create Todo Task</a> -->
-        <!-- <button  type="button" class="button-create-todo-task" onclick="activateAddUser()">Create Todo Task</button> -->
 
         <button  type="button" class="button-create-todo-task" onclick="addTodoTask()">Create Todo Task</button>
 
+
       <div class="todo-add-container">
-             <fieldset class="todo-filter-block">
-                
-                <span> <label style="color: black;">Filter - </label> </span>
-                <select id = "search" onchange="filter()">
+        <form action="">           <fieldset class="todo-filter-block">
+                <legend style="color: black; font-size: 25px;">Filter For Todo Task</legend>
+                <!-- <span> <label style="color: black; margin-left: 5%;font-size: 20px;">Filter - </label> </span> -->
+                <select id = "search" onchange="filter()" style="background-color: black;color: white;">
                     <option value = "All" selected required onchange="filter()">All</option>                   
                     <option value = "student">Student</option>
                     <option value = "gym">Gym</option>
@@ -50,72 +49,34 @@
                    </select>
     
 
-               <input id="searchInput" class="todo-input" type="text" placeholder="Search">
-               <button type="button" class="button-todoapp" onclick="searchTable()">Search</button>
              
+               <input id="searchInput" class="todo-input" type="text" placeholder="Search" style="background-color: black;color: white;" >
+
+               <button id="SearchBtn1" class="search-btn-active" onclick="searchTable()" >Search</button>
+
+               <!-- <button id="SearchBtn2" class="search-btn-disabled" onclick="searchTable()" disabled >Search</button> -->
 
                <!-- <label class="todo-label">Category</label> -->
              
             
                <!-- <input class="todo-input" type="" placeholder="filter"> -->
+               <button class="button-todoapp" type="button" onclick="clearFilter()">Clear</button>
                <button type="button" id="done" class="button-todoapp"  onclick="statusDone();">Done</button> 
-               <button class="button-todoapp" type="button" onclick="activateAddUser()">add-task</button>
                <button id="deleteButton" class="button-todoapp" onclick="deleteCheckedTodo();">Delete</button>
                <!-- <a class="button" style="border: 3px solid black;" href="">add-task</a> -->
                             
             </fieldset>
-       
-            <div id="add-todo-tasks">
-                <form id="form" class="add-todo-form"> 
-                    <!-- <div class="add-todo-form"> -->
-                    <button class="cross-button">&times</button>
-                    <div class="clear"></div>
-                    <br>
+        </form>
+   
 
-                    <span class="required-field"> * </span>  
-                  <span > <label class="todo-label" for="">Todo Name</label></span>
-                  <input id="todoName" class="todo-input-add" type="text" id="todoInput">
-                   <div class="clear"></div>
-
-                   <span class="required-field"> * </span>
-                  <span> <label class="todo-label" for="">Todo Category</label></span>
-                   <select id="todoCategory" class="todo-input-add" id = "myList">
-                    <option name="category" value = "student">Student</option>
-                    <option name="category" value = "gym">Gym</option>
-                    <option name="category" value = "home">Home</option>
-                    <option name="category" value = "personal">Personal</option>    
-                    <option name="category" value = "office">Office</option>            
-                  </select> 
-                  <div class="clear"></div>
-                  <br>
-                   
-                  <span class="required-field"> * </span>
-                <span > <label class="todo-label" for="">Start Date</label> </span>
-                   
-                <input id="todoStartDate" class="todo-input-add" type="date" onchange="startDateValidation()">
-                <div class="clear"></div>
-                 
-                   <span class="required-field"> * </span>
-                <span>   <label class="todo-label" for="">Due Date</label></span>
-                   <input id="todoDueDate" class="todo-input-add" type="date" onchange="DueDateValidation()">
-                   
-                   <div class="clear"></div>
-                   
-                   <br>   
-                   <button class="button" id="Add" style="padding:10px; width: 20%; margin-left: 100px;" onclick="addTask();">Add Task</button>
-                   <!-- <button type="button" class="button" onclick="addTodo();" id="add" style="display: inline-block;">Add</button> -->
-                   <button type="button" id="Save" class="add-task-button" onclick="saveChanges();" id="save">Edit</button>
-                <!-- </div> -->
-                   </form>
-             
-            </div>
-
+         
          <br>
-         <br>
+            <div id="noRecordFound" class="noData">No Record Found!!</div>
             <div id="noRecord" class="noData">No Todo Record !!</div>
-
-         <div id="todoTableBox" class="todoDataTable">
-             <table id="todoTable">
+            <br>
+         <div id="todoTableBox" class="todoDataTable" >
+             
+            <table id="todoTable">
               <tr id="list" class="tr">
                 <th>Select</th>
                 <th>Name</th>
@@ -131,6 +92,7 @@
             <br>
          </div>
 
+         <!-- <div class="clear"></div> -->
         </div>
     </div>    
     </div>   
