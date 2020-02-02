@@ -534,12 +534,32 @@ display: none;
     border-radius: 10px;
     margin-right: 2%;
     padding: 5px;
-    /* display: none; */
+    display: none;
 }   
 
 .search-btn-disabled{
     background-color: black;
     color: white;
+    /* width: 20%; */
+    border-radius: 10px;
+    margin-right: 2%;
+    padding: 5px;
+    display: none;
+}   
+
+.done-btn-active{
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin-right: 2%;
+    padding: 5px;
+    /* display: none; */
+}   
+
+.done-btn-disabled{
+    background-color: black;
+    color: white;
+    /* width: 20%; */
     border-radius: 10px;
     margin-right: 2%;
     padding: 5px;

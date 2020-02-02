@@ -10,7 +10,7 @@
 
 </head>
 
-<body onload="checkIsEmpty();">
+<body onload="checkIsEmpty(); emptySearch();">
      
     <div class="body-container">
          
@@ -36,7 +36,8 @@
 
 
       <div class="todo-add-container">
-        <form action="">           <fieldset class="todo-filter-block">
+        
+            <fieldset class="todo-filter-block">
                 <legend style="color: black; font-size: 25px;">Filter For Todo Task</legend>
                 <!-- <span> <label style="color: black; margin-left: 5%;font-size: 20px;">Filter - </label> </span> -->
                 <select id = "search" onchange="filter()" style="background-color: black;color: white;">
@@ -50,24 +51,24 @@
     
 
              
-               <input id="searchInput" class="todo-input" type="text" placeholder="Search" style="background-color: black;color: white;" >
+               <input id="searchInput" class="todo-input" type="text" placeholder="Search" style="background-color: black;color: white;" onchange="setSerachFlag()" >
 
-               <button id="SearchBtn1" class="search-btn-active" onclick="searchTable()" >Search</button>
-
-               <!-- <button id="SearchBtn2" class="search-btn-disabled" onclick="searchTable()" disabled >Search</button> -->
-
-               <!-- <label class="todo-label">Category</label> -->
-             
             
-               <!-- <input class="todo-input" type="" placeholder="filter"> -->
+               <button id="SearchBtn1" class="search-btn-active" onclick="searchTable()" >Search</button> 
+
+               <button id="SearchBtn2" class="search-btn-disabled" onclick="searchTable()" disabled >Search</button>
+
                <button class="button-todoapp" type="button" onclick="clearFilter()">Clear</button>
-               <button type="button" id="done" class="button-todoapp"  onclick="statusDone();">Done</button> 
+            
+               <button type="button" id="doneBtn1" class="done-btn-active"  onclick="statusDone();" >Done</button>
+
+               <button type="button" id="doneBtn2" class="done-btn-disabled"  onclick="statusDone();" disabled>Done</button> 
+            
                <button id="deleteButton" class="button-todoapp" onclick="deleteCheckedTodo();">Delete</button>
-               <!-- <a class="button" style="border: 3px solid black;" href="">add-task</a> -->
+            
                             
             </fieldset>
-        </form>
-   
+        
 
          
          <br>

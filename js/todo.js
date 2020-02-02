@@ -40,7 +40,7 @@ DisplayData();
     table.innerHTML = "";
     
     for (let i = 0; i < todolist.length; i++) {
-
+      
       let list = document.createElement("tr");
       list.innerHTML = "<td>" + "<input name='selectedItem' type='checkbox' value='yes' id='" + todolist[i].todoid + "' </td>" +
         "<td>" + todolist[i].todoName + "</td>" +
@@ -50,12 +50,11 @@ DisplayData();
         "<td>" + todolist[i].status + "</td>" ;
          if (todolist[i].status == "Done") {
          list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick="deleteTodo(' + i + ');">Delete</button>' + "</td>"; 
-         }
+        }
      else {
         list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick=" editTodo(' + i + ');">Edit</button>' + "</td>";
      }
       table.appendChild(list);
-
     }
  }
 
@@ -117,10 +116,12 @@ function DueDateValidation(){
 
   function statusDone() {
     for (var t = todolist.length - 1; t >= 0; t--) {
-      if (checkBoxes[t].checked == true) {
+      if (checkBoxes[t].checked == true) 
+      {  
         todolist[t].status = 'Done';
         localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
       }
+
     }
     DisplayData();
   }
@@ -202,56 +203,8 @@ function DueDateValidation(){
     sessionStorage.setItem("index",index);
     window.location="./editTask.html";
 
-    // let editData = todolist[i];
-    // let  todoName= editData.todoName;
-    // let todoCategory = editData.todoCategory;
-    // let todoStartDate = editData.todoStartDate;
-    // let todoDueDate = editData.todoDueDate;
-     
-    // document.getElementById("Name").value = todoName;
-    // document.getElementById("StartDate").value = todoStartDate;
-    // document.getElementById("DueDate").value = todoDueDate;
-    // document.getElementById("Category").value = todoCategory;
-
-    // window.location="./editTask.html";
-    // document.getElementById("todoName").value = todoName;
-    // document.getElementById("todoStartDate").value = todoStartDate;
-    // document.getElementById("todoDueDate").value = todoDueDate;
-    // document.getElementById("todoCategory").value = todoCategory;
-
-    // document.getElementById("Add").style.display = "none";
-    // document.getElementById("Save").style.display = "block";
-    // e = i;
   }
 
-// // _____________________________SAVE CHANGES AFTER EDIT ____________________________________
-
-//   function saveChanges() {
-//     let editData = todolist[e];
-//     editData.todoName = document.getElementById("todoName").value;
-//     editData.todoStartDate = document.getElementById("todoStartDate").value;
-//     editData.todoDueDate = document.getElementById("todoDueDate").value;
-//     editData.todoCategory = document.getElementById("todoCategory").value;
-//     startDateValidation();
-//     DueDateValidation();
-
-//     if(editData.todoName != "" && editData.todoStartDate != "" && editData.todoDueDate != "" && editData.todoCategory != "")
-//     {
-//       if(startDate == true && dueDate == true)
-//       { 
-//         localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
-//         DisplayData();
-//         document.getElementById("form").reset();
-//       }
-//       else{
-//         alert("invalid date");
-//       }      
-//     }
-//     else
-//     {
-//       alert("Fill all details");
-//     }
-//   }
 
 // ___________________________________SUCCESS MESSAGE __________________________________
 
@@ -293,14 +246,50 @@ function clearFilter()
   window.location.reload();
 }
 
+function setSerachFlag()
+{
+ var x = document.getElementById("searchInput").value;
+
+ if( x == "")
+ {
+  UserInputFlag = false;
+ }
+else{
+  UserInputFlag = true;
+  emptySearch();
+}
+
+}
+
 function emptySearch(){
-  //  var UserInput = document.getElementById("searchInput").value;
   if(UserInputFlag == false)
   {
-     document.getElementById("SearchBtn2").style.Display="block";
+    //  document.getElementById("SearchBtn1").disabled="true";
+    console.log("Empty Search Box");
+    document.getElementById("SearchBtn1").style.display="none";
+    document.getElementById("SearchBtn2").style.display="inline-block";
   }   
   else
   {    
-    document.getElementsById("SearchBtn1").style.Display="block";
+    document.getElementById("SearchBtn1").style.display="inline-block";
+    document.getElementById("SearchBtn2").style.display="none";
+
+
   }
 }
+// ------------------------------------------
+
+function checkSelected()
+{
+  if(checkBoxes.checked == true)
+  {
+    document.getElementById("doneBtn2").style.display="none";
+    document.getElementById("doneBtn1").style.display="inline-block";
+  }
+  else
+  {
+    document.getElementById("doneBtn1").style.display="none";
+    document.getElementById("doneBtn2").style.display="inline-block";
+  }
+}
+
