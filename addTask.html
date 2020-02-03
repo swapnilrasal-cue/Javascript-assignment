@@ -60,12 +60,12 @@
                   <span class="required-field"> * </span>
                 <span > <label class="todo-label" for="">Start Date</label> </span>
                    
-                <input id="todoStartDate" class="todo-input-add" type="date" onchange="startDateValidation()">
+                <input id="todoStartDate" class="todo-input-add" type="date" onchange="startDateValidation()" onclick="disablePreviousStartDates()">
                 <div class="clear"></div>
                  
                    <span class="required-field"> * </span>
                 <span>   <label class="todo-label" for="">Due Date</label></span>
-                   <input id="todoDueDate" class="todo-input-add" type="date" onchange="DueDateValidation()">
+                   <input id="todoDueDate" class="todo-input-add" type="date" onchange="DueDateValidation()" onclick="disablePreviousDueDates()">
                    
                    <div class="clear"></div>
                    

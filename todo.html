@@ -10,7 +10,7 @@
 
 </head>
 
-<body onload="checkIsEmpty(); emptySearch();">
+<body onload="checkIsEmpty(); emptySearch();checkSelected();">
      
     <div class="body-container">
          
@@ -60,11 +60,9 @@
 
                <button class="button-todoapp" type="button" onclick="clearFilter()">Clear</button>
             
-               <button type="button" id="doneBtn1" class="done-btn-active"  onclick="statusDone();" >Done</button>
+               <button disabled type="button" id="doneBtn1" class="done-btn-active"  onclick="statusDone(); checkSelected();" >Done</button>
 
-               <button type="button" id="doneBtn2" class="done-btn-disabled"  onclick="statusDone();" disabled>Done</button> 
-            
-               <button id="deleteButton" class="button-todoapp" onclick="deleteCheckedTodo();">Delete</button>
+               <button disabled id="deleteButton" class="button-todoapp" onclick="deleteCheckedTodo(); checkSelected();">Delete</button>
             
                             
             </fieldset>

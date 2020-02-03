@@ -42,7 +42,7 @@ DisplayData();
     for (let i = 0; i < todolist.length; i++) {
       
       let list = document.createElement("tr");
-      list.innerHTML = "<td>" + "<input name='selectedItem' type='checkbox' value='yes' id='" + todolist[i].todoid + "' </td>" +
+      list.innerHTML = "<td>" + "<input onclick='checkSelected();' name='selectedItem' type='checkbox' value='yes' id='" + todolist[i].todoid + "' ></td>" +
         "<td>" + todolist[i].todoName + "</td>" +
         "<td>" + todolist[i].todoCategory + "</td>" +
         "<td>" + todolist[i].todoStartDate + "</td>" +
@@ -281,15 +281,19 @@ function emptySearch(){
 
 function checkSelected()
 {
-  if(checkBoxes.checked == true)
-  {
-    document.getElementById("doneBtn2").style.display="none";
-    document.getElementById("doneBtn1").style.display="inline-block";
+  var checkBoxes = todoselect.getElementsByTagName('input');
+  for (var t = todolist.length - 1; t >= 0; t--) {    
+      if (checkBoxes[t].checked == true) {
+
+    document.getElementById("deleteButton").disabled=false;
+    document.getElementById("doneBtn1").disabled=false;
   }
+
   else
   {
-    document.getElementById("doneBtn1").style.display="none";
-    document.getElementById("doneBtn2").style.display="inline-block";
+    document.getElementById("deleteButton").disabled=true;
+    document.getElementById("doneBtn1").disabled=true;
   }
+}
 }
 

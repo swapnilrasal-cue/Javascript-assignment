@@ -288,3 +288,16 @@ function ValidatelAddress(Address)
             userAddressFlag=true;
         }    
 }
+// ___________________________IMAGE TO STRING - PROFILE PIC__________________________________________
+
+
+function PreviewImage(){
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+    oFReader.onload = function (oFREvent) {
+        document.getElementById("uploadPreview").src = oFREvent.target.result;
+        var imagepath=oFREvent.target.result;
+        // localStorage.setItem("imagepath",imagepath);
+    }
+}

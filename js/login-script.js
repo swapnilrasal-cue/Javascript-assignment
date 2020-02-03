@@ -7,11 +7,11 @@
         document.getElementById("success").style.display="block";
         sessionStorage.removeItem('test')
     }
-    else
-    {
-        console.log("Signup Sucessful");
-        document.getElementById("failure").style.display="block";
-    }
+    // else
+    // {
+    //     console.log("Signup Sucessful");
+    //     document.getElementById("failure").style.display="block";
+    // }
 })();
 
 // _________________________________VALIDATE USERNAME __________________________________
@@ -28,9 +28,9 @@ function valuser(username)
     }      
     else{
         console.log("user Not Found");
-        document.getElementById("usernameError").style.display="block";
-        document.getElementById("usernameError").innerHTML="Invalid UserName or Password";
-        document.getElementById("usernameError").style.color="red";
+        document.getElementById("passwordError").style.display="block";
+        document.getElementById("passwordError").innerHTML="Invalid UserName Or Password";
+        document.getElementById("passwordError").style.color="red";
        
     }
 }
