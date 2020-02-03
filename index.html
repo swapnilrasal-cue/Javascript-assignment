@@ -30,14 +30,14 @@
           <input class="large-area" id="username" type="email" name="uname" value=""
            placeholder=" Email Address *"  required onchange="ValidateUserName(this.value)">           
            <!-- <span class="checked" id="isCorrect">a</span> -->
-           <div class="error-section" id="unameError" ></div>
+           <div class="error-section  hide " id="unameError" ></div>
            <div class="clear"></div>
          
            <span class="required-field"> * </span> 
            <input class="large-area" id="firstname" type="text" name="fname" value="" 
            placeholder="First Name*" required onchange="ValidatefName(this.value)"> 
            <!-- <span class="checked" id="isCorrectFname">a</span> -->
-           <div class="error-section" id="fnameError"> </div>
+           <div class="error-section hide" id="fnameError"> </div>
            <div class="clear"></div>
 
 
@@ -45,7 +45,7 @@
            <input class="large-area" id="lastname" type="text" name="lname" value="" 
            placeholder="Last Name*" required onchange="ValidatelName(this.value)">           
            <!-- <span class="checked" id="isCorrect">a</span> -->
-           <div class="error-section" id="lnameError"></div>
+           <div class="error-section hide" id="lnameError"></div>
            <div class="clear"></div>
 
 
@@ -53,7 +53,7 @@
            <input class="large-area" id="password" type="password" name="pass" value=""
             placeholder="Set A Password*" required onchange="validatePass(this.value)" >
             <!-- <span class="checked" id="isCorrect">a</span> -->
-            <div class="error-section" id="passError"></div>
+            <div class="error-section hide" id="passError"></div>
             <div class="clear"></div>
 
 
@@ -61,7 +61,7 @@
            <textarea class="large-area top" id="address" name="addr" rows="4" cols="20" 
            placeholder="Address*" required ></textarea>       
            <!-- <span class="checked" id="isCorrect">a</span>     -->
-           <div class="error-section"></div>
+           <div class="error-section hide"></div>
            <div class="clear"></div>
 
            <input class="large-area image-area" id="uploadImage" type="file" accept="image/*" name="picture" 
@@ -71,7 +71,7 @@
           
            <div class="clear"></div>
           
-           <div class="error-section">pic can not be empty</div>
+           <div class="error-section hide">pic can not be empty</div>
 
            <div class="large-area top">
                 Gender - 

@@ -3,19 +3,49 @@ var userFnameFlag = true;
 var userLnameFlag = true;
 var userAddressFlag = true; 
 
+function getData()
+{
+    return JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+}
+
+function setData(data1,data2)
+{
+    localStorage.setItem(data1,data2);
+}
+
+function getSession()
+{
+    return sessionStorage.getItem('test');
+}
+
+function setSession()
+{
+    sessionStorage.setItem('test','successfull');
+}
+
+
+function clearSession()
+{
+    sessionStorage.clear();
+}
+
+function removeSession()
+{
+    sessionStorage.removeItem('test');
+}
 // ___________________________________SUCCESS MESSAGE __________________________________
 
 (function(){
-    let p = sessionStorage.getItem('test')
-    if(p == 5){
+    let p = getSession();
+    if(p == 'successfull'){
         console.log("profile edited Sucessful");
-        document.getElementById("success").style.display="block";
-        sessionStorage.removeItem('test')
+        document.getElementById("success").classList.remove("hide");
+        // sessionStorage.removeItem('test')
+        removeSession();
     }
     else
     {
         console.log("edit profile failed");
-        // document.getElementById("failure").style.display="block";
     }
 })();
 
@@ -32,7 +62,8 @@ function assignval(){
     var userImage = document.getElementById("uploadPreview");
     var testgen=document.getElementById("gen");
     console.log(testaddr);
-    var test2=JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var test2 = getData();
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
     testuid.value=test2.username;
     testfname.value=test2.firstname;
     testlname.value=test2.lastname;
@@ -56,16 +87,17 @@ function assignval2()
     var userImage = document.getElementById("uploadPreview");
     // var testgen=document.getElementById("gen");
 
-    var test2=JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    console.log(test2.gender)
+    var test2 = getData();
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    console.log(test2.gender);
 
-    testuid.value=test2.username;
-    testfname.value=test2.firstname;
-    testlname.value=test2.lastname;
-    testpass.value=test2.password;
-    testaddr.value=test2.address;
-    userImage.src = test2.pic;
-    // testgen.value=test2.gender;
+testuid.value = test2.username;
+testfname.value = test2.firstname;
+testlname.value = test2.lastname;
+testpass.value = test2.password;
+testaddr.value = test2.address;
+userImage.src = test2.pic;
+// testgen.value=test2.gender;
 
     if(test2.gender == "Male"){
         document.getElementById("Male").checked = true
@@ -82,14 +114,15 @@ function assignval2()
 
 function sessionClear()
 {
-sessionStorage.clear();
+    clearSession();
 window.location="./login.html";
 }
 
 // __________________________________EDIT USER PROFILE__________________________________
 
 function EditUserData(){
-    var test3=JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var test3 = getData(); 
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
     var UserName = document.getElementById("username").value;
     var FirstName = document.getElementById("firstname").value;
     var LastName = document.getElementById("lastname").value;
@@ -113,9 +146,11 @@ function EditUserData(){
         // console.log('userFnameFlag',userFnameFlag)
         // console.log('userLnameFlag',userLnameFlag)
         if(userPassFlag && userFnameFlag && userLnameFlag && userAddressFlag)
-        {
-            localStorage.setItem(test3.username,userRecord);
-            sessionStorage.setItem('test',5);
+        {   
+            setData(test3.username,userRecord);
+            // localStorage.setItem(test3.username,userRecord);
+            setSession();
+            // sessionStorage.setItem('test','successfull');
             window.location="./profile.html";
         }
         else
@@ -125,78 +160,11 @@ function EditUserData(){
         
      }
 
-
-// function setprofilePic(){
-//     var userDp=localStorage.getItem("pic");
-//     console.log(userDp);
-//     document.getElementById("profileDp").src="userDp";
-// }
-
 // __________________________________PREVENT BACK_______________________________________
 
 function preventBack() { window.history.forward(); }
 setTimeout("preventBack()", 0);
 window.onunload = function () { null };
-
-// // __________________________________VALIDATE PASSWORD__________________________________
-
-// function validatePass(Password){
-    
-//     if( Password.length < 8)
-//     {
-//         document.getElementById("passError").innerHTML="Weak Password - * Password Should Be Atleast 9-15 Charachers *";
-//         document.getElementById("passError").style.display="block";
-//         document.getElementById("passError").style.color="red";
-//         console.log("weak");
-//     }
-//     else
-//     {
-//         document.getElementById("passError").innerHTML="&#x2713";
-//         document.getElementById("passError").style.display="block";
-//         document.getElementById("passError").style.color="green";
-//         console.log("strong");
-//     }
-// }
-
-// // __________________________________VALIDATE FIRSTNAME__________________________________
-
-// function ValidatefName(firstname)
-//       {           
-//         if (!firstname.match(/^[a-zA-Z]+$/)) 
-//         {
-//             document.getElementById("fnameError").innerHTML="Invalid FirstName";
-//             document.getElementById("fnameError").style.display="block";
-//             document.getElementById("fnameError").style.color="red";
-//             return false;
-//         }
-//         else
-//         {
-//             document.getElementById("fnameError").innerHTML="&#x2713";
-//             document.getElementById("fnameError").style.display="block";
-//             document.getElementById("fnameError").style.color="green";
-//             return true;    
-//         }          
-//       }
-
-// // __________________________________VALIDATE LASTNAME____________________________________
-
-// function ValidatelName(LastName)
-// { 
-//            if (!LastName.match(/^[a-zA-Z]+$/)) 
-//         {
-//             document.getElementById("lnameError").innerHTML="Only Alphabets are Allowed";
-//             document.getElementById("lnameError").style.display="block";
-//             document.getElementById("lnameError").style.color="red";
-//             return false;
-//         }
-//         else
-//         {
-//             document.getElementById("lnameError").innerHTML="&#x2713";
-//             document.getElementById("lnameError").style.display="block";
-//             document.getElementById("lnameError").style.color="green";
-//             return true;    
-//         }    
-// }
 
 // __________________________________________VALIDATE PASSWORD______________________________________________
 
@@ -207,16 +175,16 @@ function validatePass(Password){
     if( Password.length < 8)
     {   
         document.getElementById("passError").innerHTML="Weak password - * Password Should Be Atleast 9-15 Charachers *";
-        document.getElementById("passError").style.display="block";
-        document.getElementById("passError").style.color="red";
+        document.getElementById("passError").classList.remove("hide");
+        // document.getElementById("passError").style.color="red";
         console.log("weak");
         userPassFlag=false;
     }
     else
     {
         document.getElementById("passError").innerHTML="&#x2713";
-        document.getElementById("passError").style.display="block";
-        document.getElementById("passError").style.color="green";
+        document.getElementById("passError").classList.remove("hide");
+        // document.getElementById("passError").style.color="green";
         console.log("strong");
         userPassFlag=true;
     }
@@ -230,16 +198,16 @@ function ValidatefName(firstname)
         if (!firstname.match(/^[a-zA-Z]+$/)) 
         {
             document.getElementById("fnameError").innerHTML="Please Enter Valid FirstName";
-            document.getElementById("fnameError").style.display="block";
-            document.getElementById("fnameError").style.color="red";
+            document.getElementById("fnameError").classList.remove("hide");
+            // document.getElementById("fnameError").style.color="red";
             userFnameFlag=false;
         }
         else
         {
-            document.getElementById("fnameError").style.display="none";
+            // document.getElementById("fnameError").style.display="none";
             document.getElementById("fnameError").innerHTML="&#x2713";
-            document.getElementById("fnameError").style.display="block";
-            document.getElementById("fnameError").style.color="green";
+            document.getElementById("fnameError").classList.remove("hide");
+            // document.getElementById("fnameError").style.color="green";
             userFnameFlag=true;
         }    
             
@@ -254,15 +222,15 @@ function ValidatelName(LastName)
            if (!LastName.match(/^[a-zA-Z]+$/)) 
         {
             document.getElementById("lnameError").innerHTML="Please Enter Valid LastName";
-            document.getElementById("lnameError").style.display="block";
-            document.getElementById("lnameError").style.color="red";
+            document.getElementById("lnameError").classList.remove("hide");
+            // document.getElementById("lnameError").style.color="red";
             userLnameFlag=false;
         }
         else
         {
             document.getElementById("lnameError").innerHTML="&#x2713";
-            document.getElementById("lnameError").style.display="block";
-            document.getElementById("lnameError").style.color="green";
+            document.getElementById("lnameError").classList.remove("hide");
+            // document.getElementById("lnameError").style.color="green";
             userLnameFlag=true;
         }    
 }
@@ -276,15 +244,15 @@ function ValidatelAddress(Address)
         if(Address == "") 
         {
             document.getElementById("addressError").innerHTML="Please Enter Valid Address";
-            document.getElementById("addressError").style.display="block";
-            document.getElementById("addressError").style.color="red";
+            document.getElementById("addressError").classList.remove("hide");
+            // document.getElementById("addressError").style.color="red";
             userAddressFlag=false;
         }
         else
         {
             document.getElementById("addressError").innerHTML="&#x2713";
-            document.getElementById("addressError").style.display="block";
-            document.getElementById("addressError").style.color="green";
+            document.getElementById("addressError").classList.remove("hide");
+            // document.getElementById("addressError").style.color="green";
             userAddressFlag=true;
         }    
 }
@@ -298,6 +266,6 @@ function PreviewImage(){
     oFReader.onload = function (oFREvent) {
         document.getElementById("uploadPreview").src = oFREvent.target.result;
         var imagepath=oFREvent.target.result;
-        // localStorage.setItem("imagepath",imagepath);
+       
     }
 }

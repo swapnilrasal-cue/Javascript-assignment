@@ -207,9 +207,8 @@ margin-bottom: 2%;
     margin-bottom:2%;
     margin-right: 5%;
     font-size: 15px;
-    display: none;
     text-align: left;
-}
+    }
 .checked{
     display: none;
     float: right;
@@ -455,13 +454,11 @@ padding-bottom: 10px;
 }
 
 .success-messgae{
-display: none;
 margin-top: 2%;
 margin-bottom: 2%;
 width: 300px;
 margin: auto;
 background-color: green;
-
 }
 
 .failure-messgae{
@@ -471,4 +468,12 @@ background-color: green;
     width: 300px;
     margin: auto;
     background-color: red ;
-    }
+}
+
+.hide{
+    display: none;
+}
+
+.green-color{
+    color: green;
+}

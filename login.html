@@ -12,7 +12,7 @@
 
     <div class="main-container">
  
-       <div id="success" class="success-messgae">
+       <div id="success" class="success-messgae hide">
         Registration Successfull ....
        </div>
        
@@ -28,9 +28,9 @@
            <div class="heading" id="test">Login</div>
  
            <input class="large-area" id="user" type="text" name="uname"  value="" placeholder="Email Address*" onchange="valuser(this.value)" required>
-           <div class="error-section" id="usernameError" ></div>
+           <div class="error-section hide" id="usernameError" ></div>
            <input class="large-area" id="pass" type="password" name="pass"  value="" placeholder="Password*" required>
-           <div class="error-section" id="passwordError"></div>
+           <div class="error-section hide" id="passwordError"></div>
         
            <input class="login-button" onclick="checklogin()" type="button" value="Submit">
         </form>

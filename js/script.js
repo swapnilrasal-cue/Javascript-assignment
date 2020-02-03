@@ -1,11 +1,25 @@
-var userNameFlag=false;
-var userPassFlag=false;
-var userFnameFlag=false;
-var userLnameFlag=false;
 
+  var userNameFlag=false;
+  var userPassFlag=false;
+  var userFnameFlag=false;
+  var userLnameFlag=false;
+  
+  function setSession()
+  {
+    sessionStorage.setItem('test','successfull');
+  }
+// ________________________________________ FALLBACK FUNCTION______________________________________
+
+ function fallback()
+ {
+ if(!localStorage)
+ {
+ alert("Your Broswer doesn't support localstroage");
+ }
+}
 // __________________________________________VALIDATE USER______________________________________________
 
-function ValidateUser()
+ function ValidateUser()
 {
     var UserName = document.getElementById("username").value;
     var FirstName = document.getElementById("firstname").value;
@@ -34,8 +48,7 @@ function ValidateUser()
 
 // __________________________________________VALIDATE USERNAME______________________________________________
 
-
-function ValidateUserName()
+ function ValidateUserName()
 {
     var UserName = document.getElementById("username").value;
    
@@ -44,25 +57,21 @@ function ValidateUserName()
         if(UserName.match(/.+@(cuelogic)\.com$/))
           { 
             document.getElementById("unameError").innerHTML="&#x2713";
-            document.getElementById("unameError").style.display="block";
-            document.getElementById("unameError").style.color="green";
+            document.getElementById("unameError").classList.remove("hide");
             console.log("proper");
             userNameFlag=true;
           }
         else
           {
             document.getElementById("unameError").innerHTML="Incorrect Domain Only cuelogic.com is Allowed";
-            document.getElementById("unameError").style.display="block";
-            document.getElementById("unameError").style.color="red";
+            document.getElementById("unameError").classList.remove("hide");
             userNameFlag=false;
           }
-        
         }
         else
          {
            document.getElementById("unameError").innerHTML="UserName* Already Exist";
-           document.getElementById("unameError").style.display="block";
-           document.getElementById("unameError").style.color="red";
+           document.getElementById("unameError").classList.remove("hide");
          }
         
 }
@@ -70,44 +79,41 @@ function ValidateUserName()
 // __________________________________________VALIDATE PASSWORD______________________________________________
 
 
-function validatePass(Password){
+ function validatePass(Password){
     
     if( Password.length < 8)
     {
         document.getElementById("passError").innerHTML="Weak password - * Password Should Be Atleast 9-15 Charachers *";
-        document.getElementById("passError").style.display="block";
-        document.getElementById("passError").style.color="red";
+        document.getElementById("passError").classList.remove("hide");
         console.log("weak");
         userPassFlag=false;
     }
     else
     {
         document.getElementById("passError").innerHTML="&#x2713";
-        document.getElementById("passError").style.display="block";
-        document.getElementById("passError").style.color="green";
-        console.log("strong");
+        document.getElementById("passError").classList.remove("hide");
+
+        // console.log("strong");
         userPassFlag=true;
     }
 }
 
 // __________________________________________VALIDATE FIRSTNAME______________________________________________
 
-function ValidatefName(firstname)
+ function ValidatefName(firstname)
       { 
           
         if (!firstname.match(/^[a-zA-Z]+$/)) 
         {
             document.getElementById("fnameError").innerHTML="Please Enter Valid FirstName";
-            document.getElementById("fnameError").style.display="block";
-            document.getElementById("fnameError").style.color="red";
+            document.getElementById("fnameError").classList.remove("hide");
             userFnameFlag=false;
         }
         else
         {
-            document.getElementById("fnameError").style.display="none";
+            // document.getElementById("fnameError").style.display="none";
             document.getElementById("fnameError").innerHTML="&#x2713";
-            document.getElementById("fnameError").style.display="block";
-            document.getElementById("fnameError").style.color="green";
+            document.getElementById("fnameError").classList.remove("hide");
             userFnameFlag=true;
         }    
             
@@ -116,20 +122,18 @@ function ValidatefName(firstname)
 // __________________________________________VALIDATE LASTNAME______________________________________________
       
 
-function ValidatelName(LastName)
+ function ValidatelName(LastName)
 { 
            if (!LastName.match(/^[a-zA-Z]+$/)) 
         {
             document.getElementById("lnameError").innerHTML="Please Enter Valid LastName";
-            document.getElementById("lnameError").style.display="block";
-            document.getElementById("lnameError").style.color="red";
+            document.getElementById("lnameError").classList.remove("hide");
             userLnameFlag=false;
         }
         else
         {
             document.getElementById("lnameError").innerHTML="&#x2713";
-            document.getElementById("lnameError").style.display="block";
-            document.getElementById("lnameError").style.color="green";
+            document.getElementById("lnameError").classList.remove("hide");
             userLnameFlag=true;
         }    
 }
@@ -137,7 +141,7 @@ function ValidatelName(LastName)
 // ___________________________IMAGE TO STRING - PROFILE PIC__________________________________________
 
 
-function PreviewImage(){
+ function PreviewImage(){
     var oFReader = new FileReader();
     oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
 
@@ -152,31 +156,33 @@ function PreviewImage(){
 
 
 function reg(){
-
-        var UserName = document.getElementById("username").value;
-        var FirstName = document.getElementById("firstname").value;
-        var LastName = document.getElementById("lastname").value;
-        var Password = document.getElementById("password").value;
-        var Address = document.getElementById("address").value;
-        var Pic = document.getElementById("uploadPreview").src;
-        var Gender = document.querySelector('input[name=gen]:checked').value;
+var UserName = document.getElementById("username").value;
+var FirstName = document.getElementById("firstname").value;
+var LastName = document.getElementById("lastname").value;
+var Password = document.getElementById("password").value;
+var Address = document.getElementById("address").value;
+var Pic = document.getElementById("uploadPreview").src;
+var Gender = document.querySelector('input[name=gen]:checked').value;
         
-                var dataObj= {
-                    "username":UserName,
-                    "firstname":FirstName,
-                    "lastname":LastName,
-                    "password":Password,
-                    "address":Address,
-                    "pic": Pic,
-                    "gender":Gender,
-                    "todoId": 1 ,
-                    "todotask":[],
-                };
+   var dataObj= {
+   "username":UserName,
+   "firstname":FirstName,
+   "lastname":LastName,
+   "password":Password,
+   "address":Address,
+   "pic": Pic,
+   "gender":Gender,
+   "todoId": 1 ,
+   "todotask":[],
+   };
 
-                var userRecord = JSON.stringify(dataObj);
-                localStorage.setItem(dataObj.username,userRecord);
-                sessionStorage.setItem('test',5);
-                window.location ="./login.html";
-                document.getElementById("registrationForm").reset();
-  
+  var userRecord = JSON.stringify(dataObj);
+  localStorage.setItem(dataObj.username,userRecord);
+  setSession();
+  //  sessionStorage.setItem('test','successfull');
+  window.location ="./login.html";
+  document.getElementById("registrationForm").reset();
 }
+
+
+// var Data = register();

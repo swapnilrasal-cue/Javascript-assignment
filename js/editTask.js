@@ -1,32 +1,48 @@
-var dataObj = JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-var todolist = dataObj.todotask; 
 var startDate = false;
 var dueDate= false;
-var Index = sessionStorage.getItem("index");
+
+
+
+function getData(){
+  return JSON.parse(localStorage.getItem(sessionStorage.getItem('uname')));
+}
+
+function setData(data){
+  localStorage.setItem(sessionStorage.getItem('uname'), JSON.stringify(data));
+}
+
+function getSession()
+{
+  return sessionStorage.getItem("index");
+}
 // ____________________________________EDIT TODO _________________________________________
 
 
 function editTodoTask() {
-   
-   
+    var dataObj = getData(); 
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var todolist = dataObj.todotask; 
+    var Index = getSession();
+    // sessionStorage.getItem("index");
     let editData = todolist[Index];
     let  todoName= editData.todoName;
     let todoCategory = editData.todoCategory;
     let todoStartDate = editData.todoStartDate;
     let todoDueDate = editData.todoDueDate;
-  
-    
     document.getElementById("Name").value = todoName;
     document.getElementById("StartDate").value = todoStartDate;
     document.getElementById("DueDate").value = todoDueDate;
     document.getElementById("Category").value = todoCategory;
-   
-    // e = Index;
-  }
+ }
 
 // _____________________________SAVE CHANGES AFTER EDIT ____________________________________
 
   function saveChanges() {
+    var dataObj = getData();
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var todolist = dataObj.todotask; 
+    var Index = getSession();
+    // sessionStorage.getItem("index");
     let editData = todolist[Index];
     editData.todoName = document.getElementById("Name").value;
     editData.todoStartDate = document.getElementById("StartDate").value;
@@ -39,9 +55,7 @@ function editTodoTask() {
     {
       if(startDate == true && dueDate == true)
       { 
-        localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
-        // DisplayData();
-        // document.getElementById("form").reset();
+        setData(dataObj);
         window.location="./todo.html";
     }
       else{

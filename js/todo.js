@@ -1,38 +1,41 @@
 // ________________________GLOBAL DECLARATION________________________
 
-var dataObj = JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-var todolist = dataObj.todotask; 
-var todoselect = document.getElementById("todoTable");
-var checkBoxes = todoselect.getElementsByTagName('input');
 var startDate = false;
 var dueDate = false;
 var UserInputFlag = false; 
 // ________________________LOGOUT FUNCTION________________________
 
+function getData(){
+  return JSON.parse(localStorage.getItem(sessionStorage.getItem('uname')));
+}
+
+function setData(data){
+  localStorage.setItem(sessionStorage.getItem('uname'), JSON.stringify(data));
+}
+
+function sessionClear()
+{
+  sessionStorage.clear();
+}
+
 function LogOut()
 {
-sessionStorage.clear();
-window.location="./login.html";
+sessionClear()
+  window.location="./login.html";
 }
+
 
 // ________________________DISPLAY ONLOAD FUNCTION________________________
 
 (function(){
-DisplayData();
+ DisplayData();
 })();
-
-//  // ___________________________POP UP ADD TASK_____________________________
-
-// function activateAddUser()
-// {
-//     document.getElementById("add-todo-tasks").style.display="block";
-// }
 
  // ____________________________DISPLAY RECORDS_____________________________
 
- function DisplayData()
- {
-    var dataObj = JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+function DisplayData(){
+    var dataObj = getData();
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
     let todolist = dataObj.todotask; 
     console.log(todolist);
 
@@ -99,7 +102,10 @@ function DueDateValidation(){
  // _______________________DELETE MULTIPLE SELECTED TASk___________________________
 
  function deleteCheckedTodo() {
-
+    var dataObj = getData();
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var todolist = dataObj.todotask; 
+    var todoselect = document.getElementById("todoTable");
     var checkBoxes = todoselect.getElementsByTagName('input');
     for (var t = todolist.length - 1; t >= 0; t--) {    
         if (checkBoxes[t].checked == true) {
@@ -109,17 +115,24 @@ function DueDateValidation(){
     }
     // dataObj.todotask = todolist;
     // alert("Deleted");
-    localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
+    // localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
+    setData(dataObj);
   }
 
  // ____________________________CHANGE STATUS DONE_____________________________________
 
   function statusDone() {
+    var dataObj = getData();
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var todolist = dataObj.todotask; 
+    var todoselect = document.getElementById("todoTable");
+    var checkBoxes = todoselect.getElementsByTagName('input');
     for (var t = todolist.length - 1; t >= 0; t--) {
       if (checkBoxes[t].checked == true) 
       {  
         todolist[t].status = 'Done';
-        localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
+        setData(dataObj);
+        // localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
       }
 
     }
@@ -129,9 +142,13 @@ function DueDateValidation(){
   // ____________________________DELETE SINGLE RECORD __________________________________
 
   function deleteTodo(i) {
+    var dataObj = getData();
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var todolist = dataObj.todotask; 
     todoTable.deleteRow(i + 1);
     todolist.splice(i, 1);
-    localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
+    setData(dataObj);
+    // localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
     DisplayData();
   }
   // ____________________________________FILTER _________________________________________
@@ -228,7 +245,11 @@ function addTodoTask(){
 }
 
 function checkIsEmpty()
-{
+{ 
+  var dataObj = getData();
+  // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+  var todolist = dataObj.todotask; 
+
   if(todolist == "")
   {
     alert("No Todo Record");
@@ -281,6 +302,10 @@ function emptySearch(){
 
 function checkSelected()
 {
+  var dataObj = getData();
+  // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+  var todolist = dataObj.todotask; 
+  var todoselect = document.getElementById("todoTable");
   var checkBoxes = todoselect.getElementsByTagName('input');
   for (var t = todolist.length - 1; t >= 0; t--) {    
       if (checkBoxes[t].checked == true) {

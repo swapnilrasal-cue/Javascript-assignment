@@ -1,21 +1,39 @@
 // ________________________GLOBAL DECLARATION________________________
 
-var dataObj = JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-var todolist = dataObj.todotask; 
-var todoselect = document.getElementById("todoTable");
-// var checkBoxes = todoselect.getElementsByTagName('input');
-var startDate = false;
-var dueDate = false;
+let startDate = false;
+let dueDate = false;
+
+
+function getData(){
+  return JSON.parse(localStorage.getItem(sessionStorage.getItem('uname')));
+}
+
+function setData(data){
+  localStorage.setItem(sessionStorage.getItem('uname'), JSON.stringify(data));
+}
+
+function setSession(setSessionData1,setSessionData2 )
+{
+    sessionStorage.setItem(setSessionData1,setSessionData2);
+}
+
+function clearSession()
+{
+    sessionStorage.clear();
+}
+
+
+
 // ________________________LOGOUT FUNCTION________________________
 
 function LogOut()
 {
-sessionStorage.clear();
+clearSession();
 window.location="./login.html";
 }
 
 
- // ____________________________ADD NEW RECORD_____________________________
+// ____________________________ADD NEW RECORD_____________________________
 
 var TaskArr=[];
 function addTask()
@@ -33,7 +51,7 @@ function addTask()
             "status" : "Pending", 
     }
 
-    var dataObj = JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var dataObj = getData();
     taskObj.todoid = dataObj.todoId;
     dataObj.todoId++;
     // if(dataObj.todotask === undefined || dataObj.todotask === null){
@@ -46,9 +64,11 @@ function addTask()
       {
         console.log(TodoName);
         dataObj.todotask.push(taskObj);
-        sessionStorage.setItem('test',5);
+        setSession('test','successfull');
+       
         // check();
-        localStorage.setItem(sessionStorage.getItem("uname"), JSON.stringify(dataObj)); 
+        setData(dataObj);
+        // localStorage.setItem(sessionStorage.getItem("uname"), JSON.stringify(dataObj)); 
         window.location="./todo.html";
         // document.getElementById("form").reset();   
         // sessionStorage.removeItem('test');
@@ -103,71 +123,6 @@ function DueDateValidation(){
       dueDate = true;
     }
   }
-
-
-// ____________________________________EDIT TODO _________________________________________
-
-  function editTodo(i) {
-    let editData = todolist[i];
-    let  todoName= editData.todoName;
-    let todoCategory = editData.todoCategory;
-    let todoStartDate = editData.todoStartDate;
-    let todoDueDate = editData.todoDueDate;
-  
-    document.getElementById("todoName").value = todoName;
-    document.getElementById("todoStartDate").value = todoStartDate;
-    document.getElementById("todoDueDate").value = todoDueDate;
-    document.getElementById("todoCategory").value = todoCategory;
-
-    document.getElementById("Add").style.display = "none";
-    document.getElementById("Save").style.display = "block";
-    e = i;
-  }
-
-// _____________________________SAVE CHANGES AFTER EDIT ____________________________________
-
-  function saveChanges() {
-    let editData = todolist[e];
-    editData.todoName = document.getElementById("todoName").value;
-    editData.todoStartDate = document.getElementById("todoStartDate").value;
-    editData.todoDueDate = document.getElementById("todoDueDate").value;
-    editData.todoCategory = document.getElementById("todoCategory").value;
-    startDateValidation();
-    DueDateValidation();
-
-    if(editData.todoName != "" && editData.todoStartDate != "" && editData.todoDueDate != "" && editData.todoCategory != "")
-    {
-      if(startDate == true && dueDate == true)
-      { 
-        localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
-        DisplayData();
-        document.getElementById("form").reset();
-      }
-      else{
-        alert("invalid date");
-      }      
-    }
-    else
-    {
-      alert("Fill all details");
-    }
-  }
-
-// ___________________________________SUCCESS MESSAGE __________________________________
-
-// function check()
-// {
-//   let p = sessionStorage.getItem('test')
-//   if(p == 5){
-//       console.log("Signup Sucessful");
-//       document.getElementById("success").style.display="block";      
-//   }
-//   else
-//   {
-//       console.log("Signup Sucessful");
-//       document.getElementById("failure").style.display="block";
-//   }
-// }
 
 
 function addTodoTask(){
