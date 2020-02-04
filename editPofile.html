@@ -10,7 +10,7 @@
 
 </head>
 
-<body onload="assignval2()">
+<body onload="Profile.assignval2()">
  
 
     <div class="body-container">
@@ -19,7 +19,7 @@
      <div class="header-button">
         <a href="./mainpage.html"><button class="button" type="button"> Home</button></a>
         <a href="./todo.html"><button class="button" type="button" > Todo Page</button></a>     
-        <button class="button" type="button" onclick="sessionClear()"> logout</button>
+        <button class="button" type="button" onclick="Profile.sessionClear()"> logout</button>
      </div>
      <div class="clear"></div>
     </header>
@@ -31,23 +31,23 @@
 
         
          <div id="all-error-message" style="margin-bottom: 2%;"></div>
-         <input class="large-area cursorNotAllowed" id="username" type="email" name="uname" value="" placeholder="Email Address*" readonly required onload="ValidateUser(this.value) ">
+         <input class="large-area cursorNotAllowed" id="username" type="email" name="uname" value="" placeholder="Email Address*" readonly required onload="Profile.ValidateUser(this.value) ">
          <div class="error-section hide" id="unameError" ></div>
        
-         <input class="large-area" id="firstname" type="text" name="fname" value="" placeholder="First Name*" required onchange="ValidatefName(this.value)"> 
+         <input class="large-area" id="firstname" type="text" name="fname" value="" placeholder="First Name*" required onchange="Profile.ValidatefName(this.value)"> 
          <div class="error-section hide" id="fnameError"></div>
 
-         <input class="large-area" id="lastname" type="text" name="lname" value="" placeholder="Last Name*" required onchange="ValidatelName(this.value)">
+         <input class="large-area" id="lastname" type="text" name="lname" value="" placeholder="Last Name*" required onchange="Profile.ValidatelName(this.value)">
          <div class="error-section hide" id="lnameError"></div>
 
-         <input class="large-area" id="password" type="password" name="pass" value="" placeholder="Set A Password*" required onchange="validatePass(this.value)" >
+         <input class="large-area" id="password" type="password" name="pass" value="" placeholder="Set A Password*" required onchange="Profile.validatePass(this.value)" >
          <div class="error-section hide" id="passError"></div>
 
-         <textarea class="large-area" id="address" name="addr" rows="4" cols="20" placeholder="Address*" required onchange="ValidatelAddress(this.value)" ></textarea>
+         <textarea class="large-area" id="address" name="addr" rows="4" cols="20" placeholder="Address*" required onchange="Profile.ValidatelAddress(this.value)" ></textarea>
          <div class="error-section hide" id="addressError"></div>
 
 
-         <input class="large-area top" id="uploadImage" type="file" accept="image/*" name="picture" value="" placeholder="Profile Picture*" required onchange="PreviewImage()">
+         <input class="large-area top" id="uploadImage" type="file" accept="image/*" name="picture" value="" placeholder="Profile Picture*" required onchange="Profile.PreviewImage()">
          <img class="image-preview2" id="uploadPreview" src="" alt="image" width="28%" height="50px">
          <div class="clear"></div>
          <div class="error-section hide"></div>
@@ -63,7 +63,7 @@
           <!-- <button class="tab2" onclick="EditUserData()" type="button"> register</button>
          <div class="clear"></div> -->
         <br>
-        <button class="profile-button" type="button" onclick="EditUserData()">Save</button>
+        <button class="profile-button" type="button" onclick="Profile.EditUserData()">Save</button>
     </form>
     </aside>   
     <div class="clear"></div>

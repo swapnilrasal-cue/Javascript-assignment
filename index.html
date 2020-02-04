@@ -28,14 +28,14 @@
           
           <span class="required-field"> * </span> 
           <input class="large-area" id="username" type="email" name="uname" value=""
-           placeholder=" Email Address *"  required onchange="ValidateUserName(this.value)">           
+           placeholder=" Email Address *"  required onchange="Register.ValidateUserName(this.value)">           
            <!-- <span class="checked" id="isCorrect">a</span> -->
            <div class="error-section  hide " id="unameError" ></div>
            <div class="clear"></div>
          
            <span class="required-field"> * </span> 
            <input class="large-area" id="firstname" type="text" name="fname" value="" 
-           placeholder="First Name*" required onchange="ValidatefName(this.value)"> 
+           placeholder="First Name*" required onchange="Register.ValidatefName(this.value)"> 
            <!-- <span class="checked" id="isCorrectFname">a</span> -->
            <div class="error-section hide" id="fnameError"> </div>
            <div class="clear"></div>
@@ -43,7 +43,7 @@
 
            <span class="required-field"> * </span> 
            <input class="large-area" id="lastname" type="text" name="lname" value="" 
-           placeholder="Last Name*" required onchange="ValidatelName(this.value)">           
+           placeholder="Last Name*" required onchange="Register.ValidatelName(this.value)">           
            <!-- <span class="checked" id="isCorrect">a</span> -->
            <div class="error-section hide" id="lnameError"></div>
            <div class="clear"></div>
@@ -51,7 +51,7 @@
 
            <span class="required-field"> * </span> 
            <input class="large-area" id="password" type="password" name="pass" value=""
-            placeholder="Set A Password*" required onchange="validatePass(this.value)" >
+            placeholder="Set A Password*" required onchange="Register.validatePass(this.value)" >
             <!-- <span class="checked" id="isCorrect">a</span> -->
             <div class="error-section hide" id="passError"></div>
             <div class="clear"></div>
@@ -65,7 +65,7 @@
            <div class="clear"></div>
 
            <input class="large-area image-area" id="uploadImage" type="file" accept="image/*" name="picture" 
-           value="" placeholder="Profile Picture*" required onchange="PreviewImage()">
+           value="" placeholder="Profile Picture*" required onchange="Register.PreviewImage()">
           
            <img class="image-preview top" id="uploadPreview" src="images/profile-pic.png" alt="image" >
           
@@ -80,7 +80,7 @@
                 <input id="other" type="radio" name="gen" value="Other"> Other 
             </div>
 
-           <button class="tab2 pointer" onclick="ValidateUser()" type="button"> Register</button>
+           <button class="tab2 pointer" onclick="Register.ValidateUser()" type="button"> Register</button>
           
         </form>
     </div>

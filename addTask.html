@@ -19,7 +19,7 @@
               <a href="./todo.html"><button class="button" type="button" > Todo Page</button></a>
               <a href="./mainpage.html"><button class="button" type="button" > Home</button></a>  
               <a href="./profile.html"><button class="button" type="button"> Profile</button></a>   
-              <button class="button" type="button" onclick="LogOut()"> logout</button>
+              <button class="button" type="button" onclick="Add.LogOut()"> logout</button>
             </div>
             <div class="clear"></div>
         </header>
@@ -60,17 +60,17 @@
                   <span class="required-field"> * </span>
                 <span > <label class="todo-label" for="">Start Date</label> </span>
                    
-                <input id="todoStartDate" class="todo-input-add" type="date" onchange="startDateValidation()" onclick="disablePreviousStartDates()">
+                <input id="todoStartDate" class="todo-input-add" type="date" onchange="Add.startDateValidation()" onclick="Add.disablePreviousStartDates()">
                 <div class="clear"></div>
                  
                    <span class="required-field"> * </span>
                 <span>   <label class="todo-label" for="">Due Date</label></span>
-                   <input id="todoDueDate" class="todo-input-add" type="date" onchange="DueDateValidation()" onclick="disablePreviousDueDates()">
+                   <input id="todoDueDate" class="todo-input-add" type="date" onchange="Add.DueDateValidation()" onclick="Add.disablePreviousDueDates()">
                    
                    <div class="clear"></div>
                    
                    <br>   
-                   <button class="button" id="Add" style="padding:10px; width: 20%; margin-left: 100px;" onclick="addTask();">Submit</button>
+                   <button class="button" id="Add" style="padding:10px; width: 20%; margin-left: 100px;" onclick="Add.addTask();">Submit</button>
                    <!-- <button type="button" class="button" onclick="addTodo();" id="add" style="display: inline-block;">Add</button> -->
                    <!-- <button type="button" id="Save" class="add-task-button" onclick="saveChanges();" id="save">Edit</button> -->
                 <!-- </div> -->

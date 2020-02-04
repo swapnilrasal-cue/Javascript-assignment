@@ -10,7 +10,7 @@
 
 </head>
 
-<body onload="checkIsEmpty(); emptySearch();checkSelected();">
+<body onload="Todo.checkIsEmpty();Todo.checkSelected();">
      
     <div class="body-container">
          
@@ -22,7 +22,7 @@
             <div class="header-button">
              <a href="./mainpage.html"><button class="button" type="button" > Home</button></a>  
              <a href="./profile.html"><button class="button" type="button"> Profile</button></a>   
-             <button class="button" type="button" onclick="LogOut()"> logout</button>
+             <button class="button" type="button" onclick="Todo.LogOut()"> logout</button>
 
             </div>
             <div class="clear"></div>
@@ -32,7 +32,7 @@
 
         <h1 class="todo-heading"> Todo Application</h1>
 
-        <button  type="button" class="button-create-todo-task" onclick="addTodoTask()">Create Todo Task</button>
+        <button  type="button" class="button-create-todo-task" onclick="Todo.addTodoTask()">Create Todo Task</button>
 
 
       <div class="todo-add-container">
@@ -40,8 +40,8 @@
             <fieldset class="todo-filter-block">
                 <legend style="color: black; font-size: 25px;">Filter For Todo Task</legend>
                 <!-- <span> <label style="color: black; margin-left: 5%;font-size: 20px;">Filter - </label> </span> -->
-                <select id = "search" onchange="filter()" style="background-color: black;color: white;">
-                    <option value = "All" selected required onchange="filter()">All</option>                   
+                <select id = "search" onchange="Todo.filter()" style="background-color: black;color: white;">
+                    <option value = "All" selected required onchange="Todo.filter()">All</option>                   
                     <option value = "student">Student</option>
                     <option value = "gym">Gym</option>
                     <option value = "home">Home</option>
@@ -51,18 +51,18 @@
     
 
              
-               <input id="searchInput" class="todo-input" type="text" placeholder="Search" style="background-color: black;color: white;" oninput="setSerachFlag()" >
+               <!-- <input id="searchInput" class="todo-input" type="text" placeholder="Search" style="background-color: black;color: white;" oninput="Todo.setSerachFlag()" >
 
             
-               <button id="SearchBtn1" class="search-btn-active" onclick="searchTable()" >Search</button> 
+               <!-- <button id="SearchBtn1" class="search-btn-active" onclick="Todo.searchTable()" >Search</button>  -->
 
-               <button id="SearchBtn2" class="search-btn-disabled" onclick="searchTable()" disabled >Search</button>
+               <!-- <button id="SearchBtn" class="button-todoapp" onclick="Todo.searchTable()" disabled >Search</button> --> -->
 
-               <button class="button-todoapp" type="button" onclick="clearFilter()">Clear</button>
+               <button class="button-todoapp" type="button" onclick="Todo.clearFilter()">Clear</button>
             
-               <button disabled type="button" id="doneBtn1" class="done-btn-active"  onclick="statusDone(); checkSelected();" >Done</button>
+               <button disabled type="button" id="doneBtn1" class="done-btn-active"  onclick="Todo.statusDone();Todo.checkSelected();" >Done</button>
 
-               <button disabled id="deleteButton" class="button-todoapp" onclick="deleteCheckedTodo(); checkSelected();">Delete</button>
+               <button disabled id="deleteButton" class="button-todoapp" onclick="Todo.deleteCheckedTodo();Todo.checkSelected();">Delete</button>
             
                             
             </fieldset>

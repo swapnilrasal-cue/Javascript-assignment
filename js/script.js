@@ -1,3 +1,4 @@
+var Register = (function () {
 
   var userNameFlag=false;
   var userPassFlag=false;
@@ -17,9 +18,45 @@
  alert("Your Broswer doesn't support localstroage");
  }
 }
-// __________________________________________VALIDATE USER______________________________________________
 
- function ValidateUser()
+// ____________________________________REGISTER USER RECORD___________________________________________
+
+
+function reg(){
+  var UserName = document.getElementById("username").value;
+  var FirstName = document.getElementById("firstname").value;
+  var LastName = document.getElementById("lastname").value;
+  var Password = document.getElementById("password").value;
+  var Address = document.getElementById("address").value;
+  var Pic = document.getElementById("uploadPreview").src;
+  var Gender = document.querySelector('input[name=gen]:checked').value;
+          
+     var dataObj= {
+     "username":UserName,
+     "firstname":FirstName,
+     "lastname":LastName,
+     "password":Password,
+     "address":Address,
+     "pic": Pic,
+     "gender":Gender,
+     "todoId": 1 ,
+     "todotask":[],
+     };
+  
+    var userRecord = JSON.stringify(dataObj);
+    localStorage.setItem(dataObj.username,userRecord);
+    setSession();
+    //  sessionStorage.setItem('test','successfull');
+    window.location ="./login.html";
+    document.getElementById("registrationForm").reset();
+  }
+  
+
+return{
+
+  // __________________________________________VALIDATE USER______________________________________________
+
+  ValidateUser:function()
 {
     var UserName = document.getElementById("username").value;
     var FirstName = document.getElementById("firstname").value;
@@ -44,11 +81,11 @@
     else{
     alert("You Must Fill In All Of The Fields");
     }
-}
+},
 
 // __________________________________________VALIDATE USERNAME______________________________________________
 
- function ValidateUserName()
+ValidateUserName:function()
 {
     var UserName = document.getElementById("username").value;
    
@@ -74,12 +111,12 @@
            document.getElementById("unameError").classList.remove("hide");
          }
         
-}
+},
 
 // __________________________________________VALIDATE PASSWORD______________________________________________
 
 
- function validatePass(Password){
+validatePass:function(Password){
     
     if( Password.length < 8)
     {
@@ -96,11 +133,11 @@
         // console.log("strong");
         userPassFlag=true;
     }
-}
+},
 
 // __________________________________________VALIDATE FIRSTNAME______________________________________________
 
- function ValidatefName(firstname)
+ValidatefName:function(firstname)
       { 
           
         if (!firstname.match(/^[a-zA-Z]+$/)) 
@@ -117,12 +154,12 @@
             userFnameFlag=true;
         }    
             
-      }
+      },
 
 // __________________________________________VALIDATE LASTNAME______________________________________________
       
 
- function ValidatelName(LastName)
+ValidatelName:function(LastName)
 { 
            if (!LastName.match(/^[a-zA-Z]+$/)) 
         {
@@ -136,12 +173,12 @@
             document.getElementById("lnameError").classList.remove("hide");
             userLnameFlag=true;
         }    
-}
+},
 
 // ___________________________IMAGE TO STRING - PROFILE PIC__________________________________________
 
 
- function PreviewImage(){
+PreviewImage:function(){
     var oFReader = new FileReader();
     oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
 
@@ -150,39 +187,9 @@
         var imagepath=oFREvent.target.result;
         // localStorage.setItem("imagepath",imagepath);
     }
-}
-
-// ____________________________________REGISTER USER RECORD___________________________________________
+},
 
 
-function reg(){
-var UserName = document.getElementById("username").value;
-var FirstName = document.getElementById("firstname").value;
-var LastName = document.getElementById("lastname").value;
-var Password = document.getElementById("password").value;
-var Address = document.getElementById("address").value;
-var Pic = document.getElementById("uploadPreview").src;
-var Gender = document.querySelector('input[name=gen]:checked').value;
-        
-   var dataObj= {
-   "username":UserName,
-   "firstname":FirstName,
-   "lastname":LastName,
-   "password":Password,
-   "address":Address,
-   "pic": Pic,
-   "gender":Gender,
-   "todoId": 1 ,
-   "todotask":[],
-   };
+};
 
-  var userRecord = JSON.stringify(dataObj);
-  localStorage.setItem(dataObj.username,userRecord);
-  setSession();
-  //  sessionStorage.setItem('test','successfull');
-  window.location ="./login.html";
-  document.getElementById("registrationForm").reset();
-}
-
-
-// var Data = register();
+})();

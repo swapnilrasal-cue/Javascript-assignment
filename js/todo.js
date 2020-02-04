@@ -1,93 +1,146 @@
-// ________________________GLOBAL DECLARATION________________________
+var Todo = (function () {
+  // ________________________GLOBAL DECLARATION________________________
 
-var startDate = false;
-var dueDate = false;
-var UserInputFlag = false; 
-// ________________________LOGOUT FUNCTION________________________
+  var startDate = false;
+  var dueDate = false;
+  var UserInputFlag = false;
+  // ________________________LOGOUT FUNCTION________________________
 
-function getData(){
-  return JSON.parse(localStorage.getItem(sessionStorage.getItem('uname')));
-}
+  function getData() {
+    return JSON.parse(localStorage.getItem(sessionStorage.getItem('uname')));
+  }
 
-function setData(data){
-  localStorage.setItem(sessionStorage.getItem('uname'), JSON.stringify(data));
-}
+  function setData(data) {
+    localStorage.setItem(sessionStorage.getItem('uname'), JSON.stringify(data));
+  }
 
-function sessionClear()
-{
-  sessionStorage.clear();
-}
+  function sessionClear() {
+    sessionStorage.clear();
+  }
 
-function LogOut()
-{
-sessionClear()
-  window.location="./login.html";
-}
+  function LogOut() {
+    sessionClear()
+    window.location = "./login.html";
+  }
 
 
-// ________________________DISPLAY ONLOAD FUNCTION________________________
+  // ________________________DISPLAY ONLOAD FUNCTION________________________
 
-(function(){
- DisplayData();
-})();
+  (function () {
+    DisplayData();
+  })();
 
- // ____________________________DISPLAY RECORDS_____________________________
+  // ____________________________DISPLAY RECORDS_____________________________
 
-function DisplayData(){
+  function DisplayData() {
     var dataObj = getData();
     // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    let todolist = dataObj.todotask; 
+    let todolist = dataObj.todotask;
     console.log(todolist);
 
     let table = document.getElementById("todoTableBody");
     table.innerHTML = "";
-    
+
     for (let i = 0; i < todolist.length; i++) {
-      
+
       let list = document.createElement("tr");
-      list.innerHTML = "<td>" + "<input onclick='checkSelected();' name='selectedItem' type='checkbox' value='yes' id='" + todolist[i].todoid + "' ></td>" +
+      list.innerHTML = "<td>" + "<input onclick='Todo.checkSelected();' name='selectedItem' type='checkbox' value='yes' id='" + todolist[i].todoid + "' ></td>" +
         "<td>" + todolist[i].todoName + "</td>" +
         "<td>" + todolist[i].todoCategory + "</td>" +
         "<td>" + todolist[i].todoStartDate + "</td>" +
         "<td>" + todolist[i].todoDueDate + "</td>" +
-        "<td>" + todolist[i].status + "</td>" ;
-         if (todolist[i].status == "Done") {
-         list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick="deleteTodo(' + i + ');">Delete</button>' + "</td>"; 
-        }
-     else {
-        list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick=" editTodo(' + i + ');">Edit</button>' + "</td>";
-     }
+        "<td>" + todolist[i].status + "</td>";
+      if (todolist[i].status == "Done") {
+        list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick="Todo.deleteTodo(' + i + ');">Delete</button>' + "</td>";
+      }
+      else {
+        list.innerHTML += "<td>" + '<button type="button" style="display:block" name="" id="btn' + i + '" onclick="Todo.editTodo(' + i + ');">Edit</button>' + "</td>";
+      }
       table.appendChild(list);
     }
- }
+  }
 
-// ____________________________VALIDATE Dates_____________________________
+  // ____________________________VALIDATE Dates_____________________________
 
-function test(tes){
-   return ''+tes.getFullYear()+'-'+(tes.getMonth()+1)+'-'+tes.getDate()
-}
+  function test(tes) {
+    return '' + tes.getFullYear() + '-' + (tes.getMonth() + 1) + '-' + tes.getDate()
+  }
 
-function startDateValidation(){
+  return {
+
+    clearFilter:function() {
+      window.location.reload();
+    },
+  
+    // setSerachFlag:function() {
+    //   var x = document.getElementById("searchInput").value;
+  
+    //   if (x == "") {
+    //     UserInputFlag = false;
+    //     document.getElementById("SearchBtn").disabled=true;
+    //   }
+    //   else {
+    //     UserInputFlag = true;
+    //     document.getElementById("SearchBtn").disabled=false;
+    //     // emptySearch();
+    //   }
+  
+    // },
+  
+    // emptySearch:function() {
+    //   if (UserInputFlag == false) {
+    //     //  document.getElementById("SearchBtn1").disabled="true";
+    //     console.log("Empty Search Box");
+    //     // document.getElementById("SearchBtn1").style.display = "none";
+    //     document.getElementById("SearchBtn2").style.display = "inline-block";
+    //   }
+    //   else {
+    //     document.getElementById("SearchBtn1").style.display = "inline-block";
+    //     document.getElementById("SearchBtn2").style.display = "none";
+  
+  
+    //   }
+    // },
+    // ------------------------------------------
+  
+    checkSelected:function() {
+      var dataObj = getData();
+      // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+      var todolist = dataObj.todotask;
+      var todoselect = document.getElementById("todoTable");
+      var checkBoxes = todoselect.getElementsByTagName('input');
+      for (var t = todolist.length - 1; t >= 0; t--) {
+        if (checkBoxes[t].checked == true) {
+  
+          document.getElementById("deleteButton").disabled = false;
+          document.getElementById("doneBtn1").disabled = false;
+        }
+  
+        else {
+          document.getElementById("deleteButton").disabled = true;
+          document.getElementById("doneBtn1").disabled = true;
+        }
+      }
+    },
+    startDateValidation:function(){
 
     var startdate = document.getElementById("todoStartDate").value;
     startdate = test(new Date(startdate));
     console.log(startdate);
     var currentdate = test(new Date());
-    
-    if (startdate >= currentdate) 
-  {
-    // alert('Given date is greater than the current date.');
-    startDate = true;
-  }
-    else
-    {
+
+    if (startdate >= currentdate) {
+      // alert('Given date is greater than the current date.');
+      startDate = true;
+    }
+    else {
       alert('Given date is smaller than the current date.');
       startDate = false;
     }
-      
-  }
- 
-function DueDateValidation(){
+
+  },
+
+  DueDateValidation:function() {
     let startdate = document.getElementById("todoStartDate").value;
     let duedate = document.getElementById("todoDueDate").value;
     if (startdate > duedate) {
@@ -97,18 +150,18 @@ function DueDateValidation(){
     else {
       dueDate = true;
     }
-  }
+  },
 
- // _______________________DELETE MULTIPLE SELECTED TASk___________________________
+  // _______________________DELETE MULTIPLE SELECTED TASk___________________________
 
- function deleteCheckedTodo() {
+  deleteCheckedTodo:function() {
     var dataObj = getData();
     // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    var todolist = dataObj.todotask; 
+    var todolist = dataObj.todotask;
     var todoselect = document.getElementById("todoTable");
     var checkBoxes = todoselect.getElementsByTagName('input');
-    for (var t = todolist.length - 1; t >= 0; t--) {    
-        if (checkBoxes[t].checked == true) {
+    for (var t = todolist.length - 1; t >= 0; t--) {
+      if (checkBoxes[t].checked == true) {
         todoTable.deleteRow(t + 1);
         todolist.splice(t, 1);
       }
@@ -117,19 +170,18 @@ function DueDateValidation(){
     // alert("Deleted");
     // localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
     setData(dataObj);
-  }
+  },
 
- // ____________________________CHANGE STATUS DONE_____________________________________
+  // ____________________________CHANGE STATUS DONE_____________________________________
 
-  function statusDone() {
+  statusDone:function() {
     var dataObj = getData();
     // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    var todolist = dataObj.todotask; 
+    var todolist = dataObj.todotask;
     var todoselect = document.getElementById("todoTable");
     var checkBoxes = todoselect.getElementsByTagName('input');
     for (var t = todolist.length - 1; t >= 0; t--) {
-      if (checkBoxes[t].checked == true) 
-      {  
+      if (checkBoxes[t].checked == true) {
         todolist[t].status = 'Done';
         setData(dataObj);
         // localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
@@ -137,23 +189,23 @@ function DueDateValidation(){
 
     }
     DisplayData();
-  }
+  },
 
   // ____________________________DELETE SINGLE RECORD __________________________________
 
-  function deleteTodo(i) {
+  deleteTodo:function(i) {
     var dataObj = getData();
     // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-    var todolist = dataObj.todotask; 
+    var todolist = dataObj.todotask;
     todoTable.deleteRow(i + 1);
     todolist.splice(i, 1);
     setData(dataObj);
     // localStorage.setItem(sessionStorage.getItem("uname"),  JSON.stringify(dataObj));
     DisplayData();
-  }
+  },
   // ____________________________________FILTER _________________________________________
- 
-  function filter() {
+
+  filter:function() {
     var search = document.getElementById("search").value;
     let table = document.getElementById("todoTable");
     let tr = todoTable.getElementsByTagName('tr');
@@ -164,161 +216,102 @@ function DueDateValidation(){
         if (text.match(search)) {
           tr[i].style.display = "";
           // alert("found");
-          document.getElementById("noRecordFound").style.display="none";
-          document.getElementById("todoTableBox").style.display="block";
+          document.getElementById("noRecordFound").style.display = "none";
+          document.getElementById("todoTableBox").style.display = "block";
 
         }
         else if (search == "All") {
           tr[i].style.display = "";
           // alert("found");
-          document.getElementById("noRecordFound").style.display="none";
-          document.getElementById("todoTableBox").style.display="block";
+          document.getElementById("noRecordFound").style.display = "none";
+          document.getElementById("todoTableBox").style.display = "block";
         }
         else {
-          document.getElementById("noRecordFound").style.display="block";
-          document.getElementById("todoTableBox").style.display="none";
+          document.getElementById("noRecordFound").style.display = "block";
+          document.getElementById("todoTableBox").style.display = "none";
           tr[i].style.display = "none";
           // alert("Not found");
         }
       }
     }
-  }
+  },
 
   // ____________________________________SEARCH _________________________________________
- 
-  function searchTable() {
+
+  searchTable:function() {
     var input, filter, found, table, tr, td, i, j;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("todoTable");
     tr = todoTable.getElementsByTagName("tr");
     for (i = 1; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td");
-        for (j = 0; j < td.length; j++) {
-            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                found = true;
-            }
+      td = tr[i].getElementsByTagName("td");
+      for (j = 0; j < td.length; j++) {
+        if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+          found = true;
         }
-        if (found) {
-            tr[i].style.display = "";
-            document.getElementById("noRecordFound").style.display="none";
-            document.getElementById("todoTableBox").style.display="block";
-            found = false;
-        } else {
-          document.getElementById("todoTableBox").style.display="none";
-          document.getElementById("noRecordFound").style.display="block";
-            tr[i].style.display = "none";
-        }
+      }
+      if (found) {
+        tr[i].style.display = "";
+        document.getElementById("noRecordFound").style.display = "none";
+        document.getElementById("todoTableBox").style.display = "block";
+        found = false;
+      } else {
+        document.getElementById("todoTableBox").style.display = "none";
+        document.getElementById("noRecordFound").style.display = "block";
+        tr[i].style.display = "none";
+      }
+    }
+  },
+
+  // ____________________________________EDIT TODO _________________________________________
+
+  editTodo:function(i) {
+    console.log(i);
+    var index = i;
+    sessionStorage.setItem("index", index);
+    window.location = "./editTask.html";
+
+  },
+
+
+  // ___________________________________SUCCESS MESSAGE __________________________________
+
+  check:function() {
+    let p = sessionStorage.getItem('test')
+    if (p == 5) {
+      console.log("Signup Sucessful");
+      document.getElementById("success").style.display = "block";
+    }
+    else {
+      console.log("Signup Sucessful");
+      document.getElementById("failure").style.display = "block";
+    }
+  },
+
+
+  addTodoTask:function() {
+    window.location = "./addTask.html";
+  },
+
+  checkIsEmpty:function() {
+    var dataObj = getData();
+    // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
+    var todolist = dataObj.todotask;
+
+    if (todolist == "") {
+      alert("No Todo Record");
+      document.getElementById("noRecord").style.display = "block";
+    }
+    else {
+      // alert("Record Found");
+      document.getElementById("todoTableBox").style.display = "block";
     }
   }
 
-// ____________________________________EDIT TODO _________________________________________
 
-  function editTodo(i) {
-    console.log(i);
-    var index=i;
-    sessionStorage.setItem("index",index);
-    window.location="./editTask.html";
-
-  }
+};
 
 
-// ___________________________________SUCCESS MESSAGE __________________________________
 
-function check()
-{
-  let p = sessionStorage.getItem('test')
-  if(p == 5){
-      console.log("Signup Sucessful");
-      document.getElementById("success").style.display="block";      
-  }
-  else
-  {
-      console.log("Signup Sucessful");
-      document.getElementById("failure").style.display="block";
-  }
-}
-
-
-function addTodoTask(){
-  window.location ="./addTask.html";
-}
-
-function checkIsEmpty()
-{ 
-  var dataObj = getData();
-  // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-  var todolist = dataObj.todotask; 
-
-  if(todolist == "")
-  {
-    alert("No Todo Record");
-    document.getElementById("noRecord").style.display="block";
-  }
-  else
-  {
-    // alert("Record Found");
-    document.getElementById("todoTableBox").style.display="block";
-  }
-}
-
-function clearFilter()
-{
-  window.location.reload();
-}
-
-function setSerachFlag()
-{
- var x = document.getElementById("searchInput").value;
-
- if( x == "")
- {
-  UserInputFlag = false;
- }
-else{
-  UserInputFlag = true;
-  emptySearch();
-}
-
-}
-
-function emptySearch(){
-  if(UserInputFlag == false)
-  {
-    //  document.getElementById("SearchBtn1").disabled="true";
-    console.log("Empty Search Box");
-    document.getElementById("SearchBtn1").style.display="none";
-    document.getElementById("SearchBtn2").style.display="inline-block";
-  }   
-  else
-  {    
-    document.getElementById("SearchBtn1").style.display="inline-block";
-    document.getElementById("SearchBtn2").style.display="none";
-
-
-  }
-}
-// ------------------------------------------
-
-function checkSelected()
-{
-  var dataObj = getData();
-  // JSON.parse(localStorage.getItem(sessionStorage.getItem("uname")));
-  var todolist = dataObj.todotask; 
-  var todoselect = document.getElementById("todoTable");
-  var checkBoxes = todoselect.getElementsByTagName('input');
-  for (var t = todolist.length - 1; t >= 0; t--) {    
-      if (checkBoxes[t].checked == true) {
-
-    document.getElementById("deleteButton").disabled=false;
-    document.getElementById("doneBtn1").disabled=false;
-  }
-
-  else
-  {
-    document.getElementById("deleteButton").disabled=true;
-    document.getElementById("doneBtn1").disabled=true;
-  }
-}
-}
-
+}) ();
