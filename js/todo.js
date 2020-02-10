@@ -18,10 +18,7 @@ var Todo = (function () {
     sessionStorage.clear();
   }
 
-  function LogOut() {
-    sessionClear()
-    window.location = "./login.html";
-  }
+
 
 
   // ________________________DISPLAY ONLOAD FUNCTION________________________
@@ -67,6 +64,11 @@ var Todo = (function () {
   }
 
   return {
+
+    LogOut:function() {
+      sessionClear()
+      window.location = "./login.html";
+    },
 
     clearFilter:function() {
       window.location.reload();
@@ -117,8 +119,8 @@ var Todo = (function () {
         }
   
         else {
-          document.getElementById("deleteButton").disabled = true;
-          document.getElementById("doneBtn1").disabled = true;
+          // document.getElementById("deleteButton").disabled = true;
+          // document.getElementById("doneBtn1").disabled = true;
         }
       }
     },
